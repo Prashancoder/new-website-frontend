@@ -103,6 +103,18 @@ function App() {
         <Route path='/createlecture/:courseId' element={userData?.role === "educator"?<CreateLecture/>:<Navigate to={"/signup"}/>}/>
         <Route path='/editlecture/:courseId/:lectureId' element={userData?.role === "educator"?<EditLecture/>:<Navigate to={"/signup"}/>}/>
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
+
+
+
+
+
+
+
+
+
+
+
+
         {/* Specific Course Routes - handled by CoursePage */}
         <Route path='/courses/permanent-makeup/masters-eyebrows' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/master-scalp' element={<CoursePage/>}/>
@@ -110,7 +122,7 @@ function App() {
         <Route path='/courses/permanent-makeup/cert-lip' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-brows-lash' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-scalp' element={<CoursePage/>}/>
-        <Route path='/courses/permanent-makeup/cert-laser-hair' element={<CoursePage/>}/>
+        <Route path='/courses/permanent-makeup/cert-laser-hair' element={<CoursePage/>}/>   
         <Route path='/courses/permanent-makeup/cert-skin-tech' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/master-chemical-peels' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/diploma-advanced' element={<CoursePage/>}/>
@@ -131,6 +143,18 @@ function App() {
         <Route path='/courses/fellowship/facial-aesthetics' element={<CoursePage/>}/>
         <Route path='/courses/fellowship/permanent-micropigmentation' element={<CoursePage/>}/>
         <Route path='/courses/fellowship/facial-permanent-micropigmentation' element={<CoursePage/>}/>
+
+
+
+
+
+
+
+
+
+
+
+        
         {/* Laser Practise nested */}
         <Route path='/courses/laser-practise/permanent-cosmetology' element={<CoursePage/>}/>
         <Route path='/courses/laser-practise/facial-permanent-cosmetology' element={<CoursePage/>}/>
