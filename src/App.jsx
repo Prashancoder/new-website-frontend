@@ -17,6 +17,8 @@ import CreateCourse from './pages/admin/CreateCourse'
 import CreateLecture from './pages/admin/CreateLecture'
 import EditLecture from './pages/admin/EditLecture'
 
+
+
 import getCouseData from './customHooks/getCouseData'
 import ViewCourse from './pages/ViewCourse'
 import ScrollToTop from './components/ScrollToTop'
@@ -151,8 +153,7 @@ function App() {
 
 
 
-
-
+      <Route path="/permanent-makeup" element={<PermanentMakeupServices />} />
 
         
         {/* Laser Practise nested */}
