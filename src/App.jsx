@@ -19,6 +19,19 @@ import EditLecture from './pages/admin/EditLecture'
 
 
 
+
+
+
+// import ClinicsPage from "./pages/ClinicsPage";
+
+
+
+import ServicePage from './pages/ServicePage'
+import ProductDetail from './pages/ProductDetail'
+import ShopPage from './pages/ShopPage'
+import ClinicsPage from './pages/ClinicsPage'
+
+
 import getCouseData from './customHooks/getCouseData'
 import ViewCourse from './pages/ViewCourse'
 import ScrollToTop from './components/ScrollToTop'
@@ -219,6 +232,39 @@ function App() {
 
         <Route path='/websitecourses' element={<Websitecourses/>}/>
         <Route path='/treatments' element={<Treatments/>}/>
+
+
+
+
+
+
+
+
+
+                 {/* Clinics Pages */}
+           <Route path="/clinics" element={<ClinicsPage />} />
+          <Route path="/clinics/amritsar" element={<ClinicsPage />} />
+          <Route path="/clinics/gurgaon" element={<ClinicsPage />} />
+          <Route path="/clinics/jammu" element={<ClinicsPage />} />
+
+          {/* Shop Pages */}
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/shop/permanent-makeup" element={<ShopPage />} />
+          <Route path="/shop/cosmetology" element={<ShopPage />} />
+          <Route path="/shop/facial-aesthetics" element={<ShopPage />} />
+
+          <Route path="/shop/product/:id" element={<ProductDetail />} />
+
+
+          {/* Dynamic Service Pages (Legacy) */}
+          <Route path="/services/:slug" element={<ServicePage title="" description="" />} />
+
+
+
+
+
+
+
 
 
 
