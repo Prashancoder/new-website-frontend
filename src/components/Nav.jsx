@@ -34,7 +34,7 @@ const DesktopNavItem = ({ item, navigate, openMenu, setOpenMenu, index }) => {
 
             {/* Level 1 Submenu Dropdown */}
             {item.submenu && openMenu === index && (
-                <div className="absolute top-full left-0 mt-3 bg-white text-gray-800 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 p-2 grid grid-cols-1 gap-1 min-w-[280px] z-50">
+<div className="absolute top-full left-0 bg-white text-gray-800 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 p-2 grid grid-cols-1 gap-1 min-w-[280px] z-50">
                     {item.submenu.map((sub, sIdx) => (
                         <div key={sIdx} className="relative group/sub">
                             <div
@@ -52,7 +52,7 @@ const DesktopNavItem = ({ item, navigate, openMenu, setOpenMenu, index }) => {
 
                             {/* Level 2 Submenu Dropdown */}
                             {sub.submenu && (
-                                <div className="absolute top-0 left-full ml-2 bg-white text-gray-800 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 p-2 grid grid-cols-1 gap-1 min-w-[280px] hidden group-hover/sub:block z-50">
+                                <div className="absolute top-0 left-full -ml-1 bg-white text-gray-800 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 p-2 grid grid-cols-1 gap-1 min-w-[280px] hidden group-hover/sub:block z-50">
                                     {sub.submenu.map((leaf, lIdx) => (
                                         <div
                                             key={lIdx}
