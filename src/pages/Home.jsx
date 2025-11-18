@@ -70,7 +70,7 @@ function Home() {
 
       {/* <ExploreCourses/> */}
       <Cardspage/>
-      <ReviewPage/>
+      {/* <ReviewPage/> */}
       <Footer/>
 
       

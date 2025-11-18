@@ -25,7 +25,6 @@ import EditLecture from './pages/admin/EditLecture'
 // import ClinicsPage from "./pages/ClinicsPage";
 
 
-
 import ServicePage from './pages/ServicePage'
 import ProductDetail from './pages/ProductDetail'
 import ShopPage from './pages/ShopPage'
@@ -92,7 +91,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={!userData?<SignUp/>:<Navigate to={"/"}/>}/>
         <Route path='/profile' element={userData?<Profile/>:<Navigate to={"/signup"}/>}/>
-        <Route path='/allcourses' element={userData?<AllCouses/>:<Navigate to={"/signup"}/>}/>
+         <Route path='/allcourses' element={userData?<AllCouses/>:<Navigate to={"/signup"}/>}/> 
         <Route path='/viewcourse/:courseId' element={userData?<ViewCourse/>:<Navigate to={"/signup"}/>}/>
         <Route path='/editprofile' element={userData?<EditProfile/>:<Navigate to={"/signup"}/>}/>
         <Route path='/enrolledcourses' element={userData?<EnrolledCourse/>:<Navigate to={"/signup"}/>}/>
