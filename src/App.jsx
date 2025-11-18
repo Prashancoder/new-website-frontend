@@ -91,7 +91,9 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={!userData?<SignUp/>:<Navigate to={"/"}/>}/>
         <Route path='/profile' element={userData?<Profile/>:<Navigate to={"/signup"}/>}/>
-         <Route path='/allcourses' element={userData?<AllCouses/>:<Navigate to={"/signup"}/>}/> 
+        {/* <Route path='/allcourses' element={userData?<AllCouses/>:<Navigate to={"/signup"}/>}/>  */}
+        <Route path='/allcourses' element={<AllCouses />} />
+
         <Route path='/viewcourse/:courseId' element={userData?<ViewCourse/>:<Navigate to={"/signup"}/>}/>
         <Route path='/editprofile' element={userData?<EditProfile/>:<Navigate to={"/signup"}/>}/>
         <Route path='/enrolledcourses' element={userData?<EnrolledCourse/>:<Navigate to={"/signup"}/>}/>
