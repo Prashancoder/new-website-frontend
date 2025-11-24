@@ -67,7 +67,7 @@ import DemoRoutes from './pages/DemoRoutes'
 import TestRoute from './pages/TestRoute'
 import BookAppointment from './pages/BookAppointment'
 
-export const serverUrl = "http://localhost:8000"
+export const serverUrl = "https://new-website-backend-2.onrender.com"
 
 function App() {
   
