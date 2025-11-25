@@ -5,16 +5,18 @@ const services = [
   {
     id: 1,
     title: "Courses",
-    image: "/src/assets/services/courses.jpg",
+    image: "/services/Courses.jpg",
     link: "/websitecourses",
   },
   {
     id: 2,
     title: "Treatments",
-    image: "/src/assets/services/treatment.jpg",
+    image: "/services/treatment.jpg",
     link: "/treatments",
   },
 ];
+
+
 
 const ServicesSection = () => {
   const navigate = useNavigate();

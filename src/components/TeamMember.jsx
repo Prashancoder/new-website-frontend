@@ -11,7 +11,7 @@ const TeamMember = () => {
       id: 1,
       name: "Dr. Sarah Johnson",
       role: "Chief Medical Director",
-      image: "/src/assets/team-member/sania-fotor.jpeg",
+      image: "/team-member/sania-fotor.jpeg", // Updated ✔
       shortDescription:
         "Leading aesthetic specialist with over 15 years of experience in cosmetic procedures and patient care.",
       fullDescription:
@@ -21,7 +21,7 @@ const TeamMember = () => {
       id: 2,
       name: "Dr. Michael Chen",
       role: "Senior Aesthetic Surgeon",
-      image: "/src/assets/team-member/Prabhneet.webp",
+      image: "/team-member/Prabhneet.webp", // Updated ✔
       shortDescription:
         "Expert in minimally invasive procedures and advanced surgical techniques for facial and body contouring.",
       fullDescription:
@@ -31,7 +31,7 @@ const TeamMember = () => {
       id: 3,
       name: "Dr. Emily Rodriguez",
       role: "Dermatology Specialist",
-      image: "/src/assets/team-member/Dr. Anshul.webp",
+      image: "/team-member/Dr. Anshul.webp", // Updated ✔
       shortDescription:
         "Board-certified dermatologist specializing in skin health, anti-aging treatments, and medical aesthetics.",
       fullDescription:
@@ -41,13 +41,14 @@ const TeamMember = () => {
       id: 4,
       name: "Dr. James Thompson",
       role: "Anesthesiologist",
-      image: "/src/assets/team-member/Prabhneet.webp",
+      image: "/team-member/Prabhneet.webp", // Updated ✔
       shortDescription:
         "Specialized in patient safety and comfort during aesthetic procedures with over 12 years of experience.",
       fullDescription:
         "Dr. James Thompson is a board-certified anesthesiologist specializing in aesthetic procedures...",
     },
   ];
+  
 
   const openModal = (member) => setSelectedMember(member);
   const closeModal = () => setSelectedMember(null);

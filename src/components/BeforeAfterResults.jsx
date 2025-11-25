@@ -3,13 +3,12 @@ import { motion } from "framer-motion";
 
 const BeforeAfterResults = () => {
   const results = [
-    { id: 1, title: "Chin Filler", image: "/src/assets/before-after/1.webp" },
-    { id: 2, title: "Full Face Lift", image: "/src/assets/before-after/2.webp" },
-    { id: 3, title: "Permanent Eyebrows", image: "/src/assets/before-after/3.webp" },
-    { id: 4, title: "Chin Filler", image: "/src/assets/before-after/4.webp" },
-
-    // Add more items if needed
+    { id: 1, title: "Chin Filler", image: "/before-after/1.webp" },
+    { id: 2, title: "Full Face Lift", image: "/before-after/2.webp" },
+    { id: 3, title: "Permanent Eyebrows", image: "/before-after/3.webp" },
+    { id: 4, title: "Chin Filler", image: "/before-after/4.webp" },
   ];
+  
 
   useEffect(() => {
     const scrollContainer = document.getElementById("results-carousel");

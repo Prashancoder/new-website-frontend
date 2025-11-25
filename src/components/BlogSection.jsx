@@ -5,28 +5,26 @@ const blogs = [
   {
     id: 1,
     title: "Profhilo – The Science Behind Skin Hydration and Bio-Remodeling",
-    description:
-      "What is Profhilo? Profhilo is a next-generation injectable treatment design...",
-    image: "/src/assets/blogs/1.jfif",
+    description: "What is Profhilo? Profhilo is a next-generation injectable treatment design...",
+    image: "/blogs/1.jfif",
     link: "https://www.timelessaesthetics.in/blogs/from-botox-to-laser-hair-reduction-explore-our-range-of-services",
   },
   {
     id: 2,
     title: "PDRN – A Regenerative Approach to Aesthetic Care",
-    description:
-      "Understanding PDRN and its role in skin rejuvenation in aesthetic medicine...",
-    image: "/src/assets/blogs/2.jfif",
+    description: "Understanding PDRN and its role in skin rejuvenation in aesthetic medicine...",
+    image: "/blogs/2.jfif",
     link: "https://www.timelessaesthetics.in/blogs/rejuvenate-your-skin-and-body-with-wellness-drips",
   },
   {
     id: 3,
     title: "From Botox to Laser Hair Reduction: Explore Our Services",
-    description:
-      "In today’s fast-paced world, aesthetic treatments have become more than...",
-    image: "/src/assets/blogs/3.jfif",
+    description: "In today’s fast-paced world, aesthetic treatments have become more than...",
+    image: "/blogs/3.jfif",
     link: "https://www.timelessaesthetics.in/blogs/combat-aging-latest-trends-in-face-lift-treatments",
   },
 ];
+
 
 const BlogSection = () => {
   return (
