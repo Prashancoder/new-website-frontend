@@ -79,7 +79,7 @@ function FellowshipCoursesPage() {
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Image */}
           <motion.img
-            src="/images/desktop.jpg"
+            src="/images/faical.webp"
             alt="About Fellowship"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
