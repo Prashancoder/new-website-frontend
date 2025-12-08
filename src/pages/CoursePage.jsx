@@ -1328,7 +1328,7 @@ const CoursePage = () => {
             </motion.div>
 
             {/* Video (login-gated) */}
-            {courseData.videoUrl && (
+            {/* {courseData.videoUrl && (
               <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
                 <div className="p-0 bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#D4AF37]/20">
                   <div className="p-4">
@@ -1356,7 +1356,11 @@ const CoursePage = () => {
                   </div>
                 </div>
               </motion.div>
-            )}
+            )} */}
+
+
+
+
 
             {/* Student Reviews */}
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
@@ -1479,7 +1483,7 @@ const CoursePage = () => {
 
                   <button
                     onClick={() => {
-                      if (!user) return navigate("/login");
+                      if (!user) return navigate("/allcourses");
                       const pathSegments = location.pathname.split("/").filter(Boolean);
                       const coursePath = pathSegments.slice(1).join("/");
                       navigate(`/course/purchase/${coursePath}`);
