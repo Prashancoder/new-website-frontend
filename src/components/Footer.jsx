@@ -1,4 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import logo from "../assets/logo.png"; // Assuming this path is correct
+
 
 const Footer = () => {
   return (
@@ -6,11 +8,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo + Info */}
         <div>
-          <img
-            src="../assets/logo-1.png"
-            alt="Timeless Aesthetics Logo"
-            className="h-12 mb-4"
-          />
+                   <img 
+                            src={logo} 
+                            className='w-[150px] md:w-[200px] rounded-md cursor-pointer' 
+                            onClick={() => navigate("/")} 
+                            alt="Logo" 
+                        />
           <p className="text-sm text-white">
             Timeless Aesthetics brings world-class facial aesthetics, cosmetology,
             and permanent makeup training and services.

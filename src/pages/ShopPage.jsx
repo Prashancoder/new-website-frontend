@@ -212,7 +212,7 @@ const ShopPage = () => {
               </CardContent>
             </Card>
 
-            <Card className="mt-6">
+            {/* <Card className="mt-6">
               <CardHeader>
                 <CardTitle>Filters</CardTitle>
               </CardHeader>
@@ -251,7 +251,10 @@ const ShopPage = () => {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
+
+
+            
           </div>
 
           {/* Products Grid */}
