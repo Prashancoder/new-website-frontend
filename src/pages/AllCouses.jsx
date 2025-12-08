@@ -76,14 +76,6 @@ function AllCourses() {
           onSubmit={(e) => e.preventDefault()}
         >
           {/* Search with AI Button */}
-          <button
-            className="w-full px-3 py-3 bg-[#3B2F2F] text-white rounded-xl 
-            flex items-center justify-center gap-3 hover:bg-[#4b4242] transition"
-            onClick={() => navigate("/searchwithai")}
-          >
-            Search with AI
-            <img src={ai} className="w-[26px] h-[26px] rounded-full" alt="" />
-          </button>
 
           {/* Category Filters */}
           {['Permanent Makeup', 'Cosmotology', 'Denstiry', 'Others'].map((cat) => (
