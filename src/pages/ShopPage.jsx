@@ -1,387 +1,341 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { ShoppingCart, Star, Heart, Filter, Search, ArrowRight, Phone } from "lucide-react"; // Added Phone icon for context
-import { Link } from "react-router-dom";
+import { useEffect, useState, useMemo } from "react";
+import { Star, Heart, Filter, Search, ArrowRight, Phone, ShoppingBag, X } from "lucide-react";
+import Header from "../components/Nav";
+import Footer from "../components/Footer";
+import { allProducts } from "../pages/shopData"; 
 
-// Removed: import { useAuth } from "../hooks/useAuth"; 
-import { allProducts } from "../pages/shopData"; // Adjusted path assumption
-import Header from "../components/Nav"; // Assuming this is available
-import Footer from "../components/Footer"; // Assuming this is available
+// --- STYLED INLINE COMPONENTS ---
 
-// --- INLINE COMPONENT SUBSTITUTES (Kept for styling integrity) ---
-// Card Components
 const Card = ({ className = "", children }) => (
-  <div className={`rounded-xl border bg-card text-card-foreground shadow ${className}`}>
+  <div className={`bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${className}`}>
     {children}
   </div>
 );
 
-const CardHeader = ({ className = "", children }) => (
-  <div className={`flex flex-col space-y-1.5 p-6 ${className}`}>
+const Badge = ({ children, className }) => (
+  <span className={`px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full ${className}`}>
     {children}
-  </div>
+  </span>
 );
 
-const CardTitle = ({ className = "", children }) => (
-  <h3 className={`font-semibold tracking-tight text-2xl ${className}`}>
-    {children}
-  </h3>
-);
-
-const CardDescription = ({ className = "", children }) => (
-  <p className={`text-sm text-luxury-muted ${className}`}>
-    {children}
-  </p>
-);
-
-const CardContent = ({ className = "", children }) => (
-  <div className={`p-6 pt-0 ${className}`}>
-    {children}
-  </div>
-);
-
-// Button Component
-const Button = ({ className = "", variant = "default", size = "default", children, ...props }) => {
-  const baseClasses = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+const Button = ({ className = "", variant = "primary", size = "default", children, onClick, ...props }) => {
+  const base = "inline-flex items-center justify-center font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none rounded-lg";
   
-  let variantClasses = "";
-  if (variant === "default") {
-    // Making default button green for "Chat/Order via WhatsApp"
-    variantClasses = "bg-green-600 text-white hover:bg-green-700"; 
-  } else if (variant === "outline") {
-    variantClasses = "border border-input bg-background hover:bg-accent hover:text-accent-foreground";
-  } else if (variant === "ghost") {
-    variantClasses = "hover:bg-accent hover:text-accent-foreground";
-  } else if (variant === "secondary") {
-    variantClasses = "bg-secondary text-secondary-foreground hover:bg-secondary/80";
-  }
+  const variants = {
+    primary: "bg-[#D4AF37] text-white hover:bg-[#b5952f] shadow-lg shadow-orange-100", // Gold
+    secondary: "bg-gray-900 text-white hover:bg-gray-800",
+    outline: "border border-gray-200 text-gray-700 hover:border-[#D4AF37] hover:text-[#D4AF37] bg-transparent",
+    ghost: "text-gray-500 hover:text-[#D4AF37] hover:bg-orange-50",
+    whatsapp: "bg-[#25D366] text-white hover:bg-[#1ebd59] shadow-md", // WhatsApp Green
+  };
 
-  let sizeClasses = "";
-  if (size === "default") {
-    sizeClasses = "h-10 py-2 px-4";
-  } else if (size === "lg") {
-    sizeClasses = "h-11 px-8";
-  } else if (size === "sm") {
-    sizeClasses = "h-9 px-3";
-  } else if (size === "icon") {
-    sizeClasses = "h-10 w-10";
-  }
-
-  const classes = `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`;
+  const sizes = {
+    sm: "h-8 px-3 text-xs",
+    default: "h-11 px-5 text-sm",
+    lg: "h-12 px-8 text-base",
+    icon: "h-10 w-10 p-0",
+  };
 
   return (
-    <button className={classes} {...props}>
+    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} onClick={onClick} {...props}>
       {children}
     </button>
   );
 };
 
-// Badge Component
-const Badge = ({ className = "", variant = "default", children }) => {
-  const baseClasses = "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
-  
-  let variantClasses = "";
-  if (variant === "default") {
-    variantClasses = "border-transparent bg-primary text-primary-foreground hover:bg-primary/80";
-  } else if (variant === "secondary") {
-    variantClasses = "bg-gray-200 text-gray-700 hover:bg-gray-300";
-  }
-  
-  const classes = `${baseClasses} ${variantClasses} ${className}`;
-
-  return (
-    <div className={classes}>
-      {children}
-    </div>
-  );
-};
-// --- END INLINE COMPONENT SUBSTITUTES ---
-
+// --- MAIN PAGE COMPONENT ---
 
 const ShopPage = () => {
   const location = useLocation();
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [products, setProducts] = useState(allProducts); 
   const navigate = useNavigate();
-  // Removed: const { user } = useAuth(); 
-  const [loading, setLoading] = useState(false); 
+  
+  // State
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState(""); // Search State
+  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    const category = pathSegments[1]; 
-    
-    if (category && category !== 'shop') {
-      setActiveCategory(category);
-      loadProducts(category);
-    } else {
-      setActiveCategory('all');
-      loadProducts('all');
-    }
-  }, [location.pathname]);
-
-  const loadProducts = (category) => { 
-    setLoading(true);
-    let filteredProducts = allProducts;
-    if (category !== 'all') {
-      filteredProducts = allProducts.filter(product => product.category === category);
-    }
-
-    setProducts(filteredProducts);
-    setLoading(false);
-  };
-
-  // --- NEW: WhatsApp Redirect Handler ---
-  const handleWhatsAppOrder = (productName, productPrice) => {
-    const phoneNumber = "918750027070"; // Placeholder Indian number
-    const message = `Hello, I am interested in purchasing the product: *${productName}* priced at ${productPrice}. Please guide me through the order process. (Product ID: ${productName.toLowerCase().replace(/[^a-z0-9]/g, '-')})`;
-    
-    // Create the WhatsApp link
-    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
-    // Open in new tab/window
-    window.open(whatsappLink, '_blank');
-  };
-  // ----------------------------------------
-
-  const categories = [
-    { id: 'all', name: 'All Products', count: allProducts.length },
+  // Categories Definition
+  const categories = useMemo(() => [
+    { id: 'all', name: 'All Collections', count: allProducts.length },
     { id: 'permanent-makeup', name: 'Permanent Makeup', count: allProducts.filter(p=>p.category==='permanent-makeup').length },
     { id: 'cosmetology', name: 'Cosmetology', count: allProducts.filter(p=>p.category==='cosmetology').length },
     { id: 'facial-aesthetics', name: 'Facial Aesthetics', count: allProducts.filter(p=>p.category==='facial-aesthetics').length }
-  ];
+  ], []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-luxury-gold mx-auto"></div>
-          <p className="mt-4 text-luxury-muted">Loading products...</p>
-        </div>
-      </div>
-    );
-  }
+  // Handle URL params for categories
+  useEffect(() => {
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const category = pathSegments[1];
+    
+    if (category && category !== 'shop') {
+      setActiveCategory(category);
+    } else {
+      setActiveCategory('all');
+    }
+  }, [location.pathname]);
+
+  // --- FILTERING LOGIC (Search + Category) ---
+  useEffect(() => {
+    setLoading(true);
+    
+    // Simulate a brief loading for UX feel
+    const timer = setTimeout(() => {
+      let result = allProducts;
+
+      // 1. Filter by Category
+      if (activeCategory !== 'all') {
+        result = result.filter(p => p.category === activeCategory);
+      }
+
+      // 2. Filter by Search Query
+      if (searchQuery.trim() !== "") {
+        result = result.filter(p => 
+          p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          p.description?.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+
+      setDisplayedProducts(result);
+      setLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [activeCategory, searchQuery]);
+
+
+  // WhatsApp Handler
+  const handleWhatsAppOrder = (productName, productPrice) => {
+    const phoneNumber = "918750027070"; 
+    const message = `Hello, I am interested in purchasing: *${productName}* (${productPrice}). Please guide me through the process.`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[#FDFBF7] font-sans selection:bg-[#D4AF37] selection:text-white">
       <Header />
 
-      {/* Hero Section */}
-      <div
-        className="relative text-white py-20 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/images/shop/banner.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/50"></div> 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Professional Shop
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8">
-              Premium products and equipment for aesthetic professionals
-            </p>
-          </div>
+      {/* --- HERO BANNER --- */}
+      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center bg-gray-900 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 z-0 opacity-60 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop')" }} 
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+        
+        <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
+          <Badge className="bg-[#D4AF37] text-white mb-4 shadow-lg">Professional Grade</Badge>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 tracking-tight">
+            The Aesthetic Shop
+          </h1>
+          <p className="text-lg text-gray-200 font-light">
+            Premium equipment & supplies for top-tier beauty professionals.
+          </p>
         </div>
       </div>
 
-      {/* Shop Content */}
+      {/* --- MAIN CONTENT LAYOUT --- */}
       <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar */}
-          <div className="lg:w-1/4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Categories</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={activeCategory === category.id ? 'default' : 'ghost'}
-                    className="w-full justify-between"
-                    // Removed variant color logic from default button here as it's handled in the inline Button component
-                    style={{ backgroundColor: activeCategory === category.id ? '#D4AF37' : undefined }} 
-                    onClick={() => {
-                      setActiveCategory(category.id);
-                      loadProducts(category.id);
-                    }}
-                  >
-                    <span>{category.name}</span>
-                    <Badge variant="secondary">{category.count}</Badge>
-                  </Button>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* <Card className="mt-6">
-              <CardHeader>
-                <CardTitle>Filters</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Price Range</h4>
-                    <div className="space-y-2">
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <span className="text-sm">Under ₹10,000</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <span className="text-sm">₹10,000 - ₹25,000</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <span className="text-sm">Above ₹25,000</span>
-                      </label>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold mb-2">Availability</h4>
-                    <div className="space-y-2">
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <span className="text-sm">In Stock</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <span className="text-sm">On Sale</span>
-                      </label>
-                    </div>
-                  </div>
+        <div className="flex flex-col lg:flex-row gap-12">
+          
+          {/* --- LEFT SIDEBAR (Sticky) --- */}
+          <aside className="lg:w-1/4">
+            <div className="sticky top-24 space-y-8">
+              
+              {/* Category Menu */}
+              <div className="bg-white p-6 rounded-2xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] border border-gray-100">
+                <h3 className="font-serif text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <Filter className="w-4 h-4 text-[#D4AF37]" /> Collections
+                </h3>
+                <div className="space-y-1">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setActiveCategory(cat.id)}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm transition-all duration-200 ${
+                        activeCategory === cat.id 
+                          ? 'bg-[#D4AF37] text-white shadow-md font-medium' 
+                          : 'text-gray-600 hover:bg-orange-50 hover:text-[#D4AF37]'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${activeCategory === cat.id ? 'bg-white/20' : 'bg-gray-100'}`}>
+                        {cat.count}
+                      </span>
+                    </button>
+                  ))}
                 </div>
-              </CardContent>
-            </Card> */}
-
-
-            
-          </div>
-
-          {/* Products Grid */}
-          <div className="lg:w-3/4">
-            {/* Search and Sort */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-luxury-muted" />
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-luxury-gold focus:border-transparent"
-                />
               </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm">
-                  <Filter className="h-4 w-4 mr-2" />
-                  Sort
+
+              {/* Support Card */}
+              <div className="bg-gray-900 rounded-2xl p-6 text-white text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-[#D4AF37] rounded-full opacity-20 blur-xl"></div>
+                <h4 className="font-bold text-lg mb-2 relative z-10">Need Expert Advice?</h4>
+                <p className="text-gray-400 text-sm mb-4 relative z-10">Our specialists are here to help you choose the right equipment.</p>
+                <Button variant="outline" className="border-gray-600 text-white hover:border-white w-full">
+                  Contact Support
                 </Button>
               </div>
+
+            </div>
+          </aside>
+
+          {/* --- RIGHT PRODUCT GRID --- */}
+          <main className="lg:w-3/4">
+            
+            {/* Search & Sort Header */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+              
+              {/* Search Bar - NOW FUNCTIONAL */}
+              <div className="relative w-full md:max-w-md">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input 
+                  type="text" 
+                  placeholder="Search products..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-transparent rounded-full text-sm focus:bg-white focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all outline-none"
+                />
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <span>Showing <strong>{displayedProducts.length}</strong> results</span>
+              </div>
             </div>
 
-            {/* Products */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Card key={product.id} className="group hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-square overflow-hidden rounded-t-lg relative">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {product.originalPrice && (
-                      <Badge className="absolute top-2 left-2 bg-red-500">
-                        Sale
-                      </Badge>
-                    )}
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+            {/* Loading State */}
+            {loading ? (
+              <div className="h-64 flex flex-col items-center justify-center text-[#D4AF37]">
+                <div className="w-10 h-10 border-4 border-current border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p className="text-gray-500 text-sm animate-pulse">Curating products...</p>
+              </div>
+            ) : (
+              <>
+                {/* Product Grid */}
+                {displayedProducts.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {displayedProducts.map((product) => (
+                      <Card key={product.id} className="group flex flex-col h-full">
+                        
+                        {/* Image Container */}
+                        <div className="relative aspect-square overflow-hidden bg-gray-100">
+                          {product.originalPrice && (
+                            <Badge className="absolute top-3 left-3 z-10 bg-red-500 text-white shadow-md">Sale</Badge>
+                          )}
+                          <button className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-sm">
+                            <Heart className="w-4 h-4" />
+                          </button>
+                          
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                          />
+                          
+                          {/* Quick Action Overlay */}
+                          <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+                             <Button 
+                              variant="primary" 
+                              className="w-full shadow-none bg-white text-gray-900 hover:bg-[#D4AF37] hover:text-white"
+                              onClick={() => navigate(`/shop/product/${product.id}`)}
+                             >
+                               View Details
+                             </Button>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-5 flex flex-col flex-grow">
+                          <div className="mb-2">
+                             <h3 className="font-bold text-gray-900 text-lg leading-tight line-clamp-2 group-hover:text-[#D4AF37] transition-colors">
+                              {product.name}
+                            </h3>
+                             {/* Rating */}
+                            <div className="flex items-center gap-1 mt-2">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`w-3 h-3 ${i < Math.floor(product.rating || 0) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200'}`}
+                                />
+                              ))}
+                              <span className="text-xs text-gray-400 ml-1">({product.reviews || 0})</span>
+                            </div>
+                          </div>
+
+                          <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-grow">
+                            {product.description}
+                          </p>
+
+                          {/* Footer: Price & WhatsApp */}
+                          <div className="pt-4 border-t border-gray-100 mt-auto">
+                            <div className="flex items-end justify-between mb-4">
+                              <div className="flex flex-col">
+                                <span className="text-xs text-gray-400 uppercase font-semibold">Price</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xl font-bold text-gray-900">{product.price}</span>
+                                  {product.originalPrice && (
+                                    <span className="text-sm text-gray-400 line-through decoration-red-400">
+                                      {product.originalPrice}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+
+                            <Button 
+                              variant="whatsapp" 
+                              className="w-full gap-2 rounded-xl"
+                              onClick={() => handleWhatsAppOrder(product.name, product.price)}
+                            >
+                              <Phone className="w-4 h-4" /> Order via WhatsApp
+                            </Button>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  // Empty State
+                  <div className="bg-white rounded-2xl p-12 text-center border border-dashed border-gray-300">
+                    <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ShoppingBag className="w-8 h-8 text-gray-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+                    <p className="text-gray-500 max-w-md mx-auto">
+                      We couldn't find any products matching "{searchQuery}". Try adjusting your search or switching categories.
+                    </p>
+                    <Button 
+                      variant="outline" 
+                      className="mt-6"
+                      onClick={() => {setSearchQuery(""); setActiveCategory("all");}}
                     >
-                      <Heart className="h-4 w-4" />
+                      Clear Filters
                     </Button>
                   </div>
-                  <CardHeader>
-                    <CardTitle className="text-lg line-clamp-2">{product.name}</CardTitle>
-                    <CardDescription className="line-clamp-2">{product.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {typeof product.rating !== 'undefined' && (
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="flex items-center">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`h-4 w-4 ${i < Math.floor(product.rating || 0) ? 'text-luxury-gold fill-current' : 'text-gray-300'}`}
-                            />
-                          ))}
-                        </div>
-                        <span className="text-sm text-luxury-muted">({product.reviews || 0})</span>
-                      </div>
-                    )}
-                    
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-2xl font-bold text-luxury-gold">{product.price}</span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-luxury-muted line-through">{product.originalPrice}</span>
-                      )}
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button
-                        className="flex-1"
-                        // MODIFIED CLICK HANDLER: WhatsApp Redirect
-                        onClick={() => handleWhatsAppOrder(product.name, product.price)}
-                      >
-                        <Phone className="h-4 w-4 mr-2" />
-                        Order via WhatsApp
-                      </Button>
-                      
-                      {/* Kept View Product button, but changed icon for better clarity */}
-                      <Button variant="outline" size="icon" onClick={() => navigate(`/shop/product/${product.id}`)}>
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* No Products Message */}
-            {products.length === 0 && (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-semibold text-luxury-dark mb-2">No products found</h3>
-                <p className="text-luxury-muted">Try adjusting your filters or search terms</p>
-              </div>
+                )}
+              </>
             )}
-          </div>
+          </main>
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="bg-luxury-gold py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Stay Updated with New Products
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Subscribe to our newsletter for the latest product updates and exclusive offers
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg border-0 focus:ring-2 focus:ring-white/50"
-            />
-            <Button variant="secondary" size="lg">
-              Subscribe
-            </Button>
-          </div>
-        </div>
-      </div>
-    
       <Footer />
     </div>
   );
 };
 
 export default ShopPage;
+
+
+
+
