@@ -59,15 +59,12 @@ const CreateCourse = () => {
                             onChange={(e)=>setCategory(e.target.value)}
                         >
                             <option value="">Select category</option>
-                            <option value="App Development">App Development</option>
-                             <option value="AI/ML">AI/ML</option>
-                            <option value="AI Tools">AI Tools
+                            <option value="Permanent Makeup">Permanent Makeup</option>
+                             <option value="Cosmetology">Cosmetology</option>
+                            <option value="Facial Aesthetics">Facial Aesthetics
                             </option>
-                             <option value="Data Science">Data Science</option>
-                            <option value="Data Analytics">Data Analytics</option>
-                            <option value="Ethical Hacking">Ethical Hacking</option>
-                            <option value="UI UX Designing">UI UX Designing</option>
-                            <option value="Web Development">Web Development</option>
+                             <option value="Fellowship">Fellowship</option>
+                            <option value="Laser Practise">Laser Practise</option>
                             <option value="Others">Others</option>
                         </select>
                     </div>

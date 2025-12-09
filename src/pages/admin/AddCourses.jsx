@@ -180,15 +180,12 @@ const editCourseHandler = async () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
               <select className="w-full border px-4 py-2 rounded-md bg-white" onChange={(e)=>setCategory(e.target.value)} value={category}>
                 <option value="">Select Category</option>
-                 <option value="App Development">App Development</option>
-                             <option value="AI/ML">AI/ML</option>
-                            <option value="AI Tools">AI Tools
+                            <option value="Permanent Makeup">Permanent Makeup</option>
+                             <option value="Cosmetology">Cosmetology</option>
+                            <option value="Facial Aesthetics">Facial Aesthetics
                             </option>
-                             <option value="Data Science">Data Science</option>
-                            <option value="Data Analytics">Data Analytics</option>
-                            <option value="Ethical Hacking">Ethical Hacking</option>
-                            <option value="UI UX Designing">UI UX Designing</option>
-                            <option value="Web Development">Web Development</option>
+                             <option value="Fellowship">Fellowship</option>
+                            <option value="Laser Practise">Laser Practise</option>
                             <option value="Others">Others</option>
               </select>
             </div>
