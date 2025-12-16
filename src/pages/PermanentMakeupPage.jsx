@@ -46,6 +46,13 @@ const courses = [
       "Learn the fundamentals of skin technology and advanced aesthetic care.",
     image: "/images/courses/222.jpg",
   },
+  {
+    title: "Medical Micropigmentation",
+    link: "/courses/permanent-makeup/Medical-micropigmentation",
+    description:
+      "Learn the fundamentals of skin technology and advanced aesthetic care.",
+    image: "/images/courses/222.jpg",
+  },
 ];
 
 const PermanentMakeupPage = () => {

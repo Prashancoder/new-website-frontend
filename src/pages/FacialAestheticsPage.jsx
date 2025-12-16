@@ -5,6 +5,7 @@ import Header from "../components/Nav";
 import Footer from "../components/Footer";
 
 const courses = [
+  { title: "Masters in Aesthetics Medicine", link: "/courses/facial-aesthetics/medical", description: "Comprehensive master program covering injectables and rejuvenation.", image: "/images/courses/1.webp" },
   { title: "Masters in Facial Aesthetics", link: "/courses/facial-aesthetics/masters", description: "Comprehensive master program covering injectables and rejuvenation.", image: "/images/courses/000.webp" },
   { title: "Master Class In Lipolytic Injections", link: "/courses/facial-aesthetics/master-lipolytic", description: "Targeted fat reduction techniques with safety protocols.", image: "/images/courses/1.webp" },
   { title: "Master Class in Nose correction", link: "/courses/facial-aesthetics/master-nose", description: "Non-surgical nose correction using advanced filler methods.", image: "/images/courses/2.webp" },

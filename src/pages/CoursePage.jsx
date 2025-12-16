@@ -566,7 +566,55 @@ image: "/images/dr.png", // replace with actual image
               },
               videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
           },
+
+
+
           // Facial Aesthetics Courses
+          "facial-aesthetics/medical": {
+            title: "Masters in Medical Aesthetics",
+            description: "Comprehensive master's program in facial aesthetics covering all aspects of non-surgical facial treatments including injectables, threads, and advanced techniques.",
+            duration: "6 Months",
+            level: "Master's",
+            category: "Medical Aesthetics",
+            price: "₹2,50,000",
+            image: "/images/goo.jpg",
+            features: [
+              "Complete facial aesthetics training",
+              "Advanced injection techniques",
+              "Thread lift procedures",
+              "Business management",
+              "Clinical experience",
+              "Mentorship program"
+            ],
+            curriculum: [
+              "Facial anatomy and aging",
+              "Injectable treatments (Botox, Fillers)",
+              "Thread lift techniques",
+              "Advanced procedures",
+              "Client consultation and assessment",
+              "Business management and marketing",
+              "Clinical practice and supervision"
+            ],
+            requirements: [
+              "Medical degree or equivalent",
+              "Valid medical license",
+              "Previous aesthetic experience preferred",
+              "Portfolio review"
+            ],
+            certification: "Master's Degree in Facial Aesthetics",
+            instructor: {
+              name: "Dr. Aesthetic Kumar",
+              bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
+              experience: "Trained 500+ professionals globally",
+image: "/images/dr.png", // replace with actual image
+              },
+              videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          },
+
+
+
+
+          
           "facial-aesthetics/masters": {
             title: "Masters in Facial Aesthetics",
             description: "Comprehensive master's program in facial aesthetics covering all aspects of non-surgical facial treatments including injectables, threads, and advanced techniques.",
@@ -1250,274 +1298,274 @@ const CoursePage = () => {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-[#FAF8F6] flex flex-col font-lato">
-      <Nav />
+    return (
+      <div className="min-h-screen bg-[#FAF8F6] flex flex-col font-lato">
+        <Nav />
 
-      {/* Hero Section */}
-      <div
-        className="relative text-white py-24 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${courseData.image})`,
-        }}
-      >
-        <div className="container mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block mb-6 text-sm px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white/90">
-              {courseData.category}
-            </span>
+        {/* Hero Section */}
+        <div
+          className="relative text-white py-24 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${courseData.image})`,
+          }}
+        >
+          <div className="container mx-auto px-4 text-center">
+            <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <span className="inline-block mb-6 text-sm px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white/90">
+                {courseData.category}
+              </span>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-playfair uppercase tracking-wide">
-              {courseData.title}
-            </h1>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 font-playfair uppercase tracking-wide">
+                {courseData.title}
+              </h1>
 
-            <div className="flex flex-wrap justify-center gap-6 text-lg mt-8 text-white/90">
-              <span className="flex items-center gap-2">
-                <Clock className="h-5 w-5" /> {courseData.duration}
-              </span>
-              <span className="flex items-center gap-2">
-                <Award className="h-5 w-5" /> {courseData.level}
-              </span>
-              <span className="flex items-center gap-2">
-                <Users className="h-5 w-5" /> Small Batch
-              </span>
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap justify-center gap-6 text-lg mt-8 text-white/90">
+                <span className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" /> {courseData.duration}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Award className="h-5 w-5" /> {courseData.level}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Users className="h-5 w-5" /> Small Batch
+                </span>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-3 gap-10">
-          {/* Left Content */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Instructor */}
-            {courseData.instructor && (
+        {/* Main Content */}
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid lg:grid-cols-3 gap-10">
+            {/* Left Content */}
+            <div className="lg:col-span-2 space-y-10">
+              {/* Instructor */}
+              {courseData.instructor && (
+                <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                  <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                    <div className="flex items-center gap-4">
+                      {courseData.instructor.image && (
+                        <img
+                          src={courseData.instructor.image}
+                          alt={courseData.instructor.name}
+                          className="w-24 h-24 rounded-full object-cover border-2 border-[#D4AF37]"
+                        />
+                      )}
+                      <div>
+                        <h3 className="text-lg font-semibold text-[#3B2F2F]">{courseData.instructor.name}</h3>
+                        <p className="text-[#555] text-sm">{courseData.instructor.bio}</p>
+                        <p className="text-[#555] text-sm mt-1">{courseData.instructor.experience}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Overview */}
               <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
                 <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                  <div className="flex items-center gap-4">
-                    {courseData.instructor.image && (
-                      <img
-                        src={courseData.instructor.image}
-                        alt={courseData.instructor.name}
-                        className="w-24 h-24 rounded-full object-cover border-2 border-[#D4AF37]"
-                      />
-                    )}
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#3B2F2F]">{courseData.instructor.name}</h3>
-                      <p className="text-[#555] text-sm">{courseData.instructor.bio}</p>
-                      <p className="text-[#555] text-sm mt-1">{courseData.instructor.experience}</p>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-xl text-[#3B2F2F]">
+                      <BookOpen className="h-5 w-5 text-[#D4AF37]" />
+                      <h4 className="font-playfair">Course Overview</h4>
                     </div>
                   </div>
+                  <p className="text-[#555] leading-relaxed text-lg">{courseData.description}</p>
+                  <span className="block w-16 h-1 bg-[#D4AF37] mt-4 rounded"></span>
                 </div>
               </motion.div>
-            )}
 
-            {/* Overview */}
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2 text-xl text-[#3B2F2F]">
-                    <BookOpen className="h-5 w-5 text-[#D4AF37]" />
-                    <h4 className="font-playfair">Course Overview</h4>
+              {/* Video (login-gated) */}
+              {/* {courseData.videoUrl && (
+                <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                  <div className="p-0 bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#D4AF37]/20">
+                    <div className="p-4">
+                      <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-2">
+                        <PlayCircle className="h-5 w-5 text-[#D4AF37]" />
+                        <span className="font-playfair">Watch Intro Class</span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      {user ? (
+                        <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+                          <iframe src={courseData.videoUrl} title="Course Intro" className="w-full h-full" allowFullScreen></iframe>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center gap-4 p-8 bg-[#FFF9F0] rounded-xl border border-[#D4AF37]/30">
+                          <p className="text-[#3B2F2F] text-center">Please login to watch the free intro class.</p>
+                          <button
+                            onClick={() => navigate("/login")}
+                            className="px-4 py-2 rounded-md border-2 border-[#D4AF37] text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition"
+                          >
+                            Login to Watch
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <p className="text-[#555] leading-relaxed text-lg">{courseData.description}</p>
-                <span className="block w-16 h-1 bg-[#D4AF37] mt-4 rounded"></span>
-              </div>
-            </motion.div>
+                </motion.div>
+              )} */}
 
-            {/* Video (login-gated) */}
-            {/* {courseData.videoUrl && (
+
+
+
+
+              {/* Student Reviews */}
               <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                <div className="p-0 bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#D4AF37]/20">
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-2">
-                      <PlayCircle className="h-5 w-5 text-[#D4AF37]" />
-                      <span className="font-playfair">Watch Intro Class</span>
-                    </div>
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                  <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
+                    <Star className="h-5 w-5 text-[#D4AF37]" />
+                    <h4 className="font-playfair">Student Reviews</h4>
                   </div>
-                  <div className="p-6">
-                    {user ? (
-                      <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
-                        <iframe src={courseData.videoUrl} title="Course Intro" className="w-full h-full" allowFullScreen></iframe>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        name: "Priya Sharma",
+                        rating: 5,
+                        comment:
+                          "Amazing course! The instructor explained everything in detail and the practice sessions were very helpful.",
+                      },
+                      {
+                        name: "Rahul Verma",
+                        rating: 4,
+                        comment:
+                          "Great experience, learned a lot about SMP techniques and handling clients.",
+                      },
+                    ].map((review, index) => (
+                      <div key={index} className="border-b border-[#D4AF37]/20 pb-3 mb-3">
+                        <h4 className="font-semibold text-[#3B2F2F]">{review.name}</h4>
+                        <p className="text-[#D4AF37]">
+                          {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
+                        </p>
+                        <p className="text-[#555] text-sm">{review.comment}</p>
                       </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center gap-4 p-8 bg-[#FFF9F0] rounded-xl border border-[#D4AF37]/30">
-                        <p className="text-[#3B2F2F] text-center">Please login to watch the free intro class.</p>
-                        <button
-                          onClick={() => navigate("/login")}
-                          className="px-4 py-2 rounded-md border-2 border-[#D4AF37] text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition"
-                        >
-                          Login to Watch
-                        </button>
-                      </div>
-                    )}
+                    ))}
                   </div>
                 </div>
               </motion.div>
-            )} */}
 
-
-
-
-
-            {/* Student Reviews */}
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                  <Star className="h-5 w-5 text-[#D4AF37]" />
-                  <h4 className="font-playfair">Student Reviews</h4>
+              {/* FAQs */}
+              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                  <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
+                    <BookOpen className="h-5 w-5 text-[#D4AF37]" />
+                    <h4 className="font-playfair">FAQs</h4>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        question: "Is prior experience required?",
+                        answer: "Basic knowledge is preferred but beginners can also join as we cover fundamentals.",
+                      },
+                      {
+                        question: "Do we get lifetime access to study material?",
+                        answer: "Yes, all students get lifetime access to digital resources.",
+                      },
+                    ].map((faq, idx) => (
+                      <div key={idx}>
+                        <h4 className="font-semibold text-[#3B2F2F]">{faq.question}</h4>
+                        <p className="text-[#555] text-sm">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="space-y-4">
-                  {[
-                    {
-                      name: "Priya Sharma",
-                      rating: 5,
-                      comment:
-                        "Amazing course! The instructor explained everything in detail and the practice sessions were very helpful.",
-                    },
-                    {
-                      name: "Rahul Verma",
-                      rating: 4,
-                      comment:
-                        "Great experience, learned a lot about SMP techniques and handling clients.",
-                    },
-                  ].map((review, index) => (
-                    <div key={index} className="border-b border-[#D4AF37]/20 pb-3 mb-3">
-                      <h4 className="font-semibold text-[#3B2F2F]">{review.name}</h4>
-                      <p className="text-[#D4AF37]">
-                        {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
-                      </p>
-                      <p className="text-[#555] text-sm">{review.comment}</p>
+              </motion.div>
+
+              {/* Career Opportunities */}
+              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                  <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
+                    <Award className="h-5 w-5 text-[#D4AF37]" />
+                    <h4 className="font-playfair">Career Opportunities</h4>
+                  </div>
+                  <ul className="list-disc list-inside space-y-1 text-[#555]">
+                    <li>Work as SMP Specialist in clinics</li>
+                    <li>Start your own Aesthetic Studio</li>
+                    <li>Become a Freelance Trainer</li>
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Gallery */}
+              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                  <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
+                    <Clock className="h-5 w-5 text-[#D4AF37]" />
+                    <h4 className="font-playfair">Gallery</h4>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {["/images/mm.webp", "/images/goo.jpg", "/images/faical.webp"].map((img, index) => (
+                      <img key={index} src={img} alt={`Gallery ${index + 1}`} className="w-full h-32 md:h-40 object-cover rounded-lg shadow-sm hover:scale-105 transition-transform" />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Sidebar (Sticky) */}
+            <div className="lg:col-span-1">
+              <div className="space-y-6 sticky top-8">
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                  <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Information</h4>
+
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#555]">Duration:</span>
+                      <span className="font-semibold">{courseData.duration}</span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
 
-            {/* FAQs */}
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                  <BookOpen className="h-5 w-5 text-[#D4AF37]" />
-                  <h4 className="font-playfair">FAQs</h4>
-                </div>
-                <div className="space-y-4">
-                  {[
-                    {
-                      question: "Is prior experience required?",
-                      answer: "Basic knowledge is preferred but beginners can also join as we cover fundamentals.",
-                    },
-                    {
-                      question: "Do we get lifetime access to study material?",
-                      answer: "Yes, all students get lifetime access to digital resources.",
-                    },
-                  ].map((faq, idx) => (
-                    <div key={idx}>
-                      <h4 className="font-semibold text-[#3B2F2F]">{faq.question}</h4>
-                      <p className="text-[#555] text-sm">{faq.answer}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#555]">Level:</span>
+                      <span className="px-3 py-1 text-sm rounded-full border"> {courseData.level} </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
 
-            {/* Career Opportunities */}
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                  <Award className="h-5 w-5 text-[#D4AF37]" />
-                  <h4 className="font-playfair">Career Opportunities</h4>
-                </div>
-                <ul className="list-disc list-inside space-y-1 text-[#555]">
-                  <li>Work as SMP Specialist in clinics</li>
-                  <li>Start your own Aesthetic Studio</li>
-                  <li>Become a Freelance Trainer</li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Gallery */}
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                  <Clock className="h-5 w-5 text-[#D4AF37]" />
-                  <h4 className="font-playfair">Gallery</h4>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {["/images/mm.webp", "/images/goo.jpg", "/images/faical.webp"].map((img, index) => (
-                    <img key={index} src={img} alt={`Gallery ${index + 1}`} className="w-full h-32 md:h-40 object-cover rounded-lg shadow-sm hover:scale-105 transition-transform" />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sidebar (Sticky) */}
-          <div className="lg:col-span-1">
-            <div className="space-y-6 sticky top-8">
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Information</h4>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#555]">Duration:</span>
-                    <span className="font-semibold">{courseData.duration}</span>
-                  </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#555]">Level:</span>
-                    <span className="px-3 py-1 text-sm rounded-full border"> {courseData.level} </span>
-                  </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#555]">Category:</span>
-                    <span className="font-semibold">{courseData.category}</span>
-                  </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#555]">Price:</span>
-                    <span className="text-2xl font-bold text-[#D4AF37]">{courseData.price}</span>
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      if (!user) return navigate("/allcourses");
-                      const pathSegments = location.pathname.split("/").filter(Boolean);
-                      const coursePath = pathSegments.slice(1).join("/");
-                      navigate(`/course/purchase/${coursePath}`);
-                    }}
-                    className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md border-2 border-[#D4AF37] bg-white text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition"
-                  >
-                    <ShoppingCart className="h-4 w-4" /> Enroll Now
-                  </button>
-
-                  <button className="w-full mt-2 px-4 py-2 rounded-md border border-[#D4AF37] text-[#3B2F2F]">
-                    Download Brochure
-                  </button>
-                </div>
-              </div>
-
-              <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/20">
-                <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Features</h4>
-                <div className="space-y-3">
-                  {courseData.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2 text-[#555]">
-                      <Star className="h-4 w-4 text-[#D4AF37]" />
-                      <span>{feature}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#555]">Category:</span>
+                      <span className="font-semibold">{courseData.category}</span>
                     </div>
-                  ))}
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#555]">Price:</span>
+                      <span className="text-2xl font-bold text-[#D4AF37]">{courseData.price}</span>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        if (!user) return navigate("/allcourses");
+                        const pathSegments = location.pathname.split("/").filter(Boolean);
+                        const coursePath = pathSegments.slice(1).join("/");
+                        navigate(`/course/purchase/${coursePath}`);
+                      }}
+                      className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md border-2 border-[#D4AF37] bg-white text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition"
+                    >
+                      <ShoppingCart className="h-4 w-4" /> Enroll Now
+                    </button>
+
+                    <button className="w-full mt-2 px-4 py-2 rounded-md border border-[#D4AF37] text-[#3B2F2F]">
+                      Download Brochure
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/20">
+                  <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Features</h4>
+                  <div className="space-y-3">
+                    {courseData.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-2 text-[#555]">
+                        <Star className="h-4 w-4 text-[#D4AF37]" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <Footer />
       </div>
+    );
+  };
 
-      <Footer />
-    </div>
-  );
-};
-
-export default CoursePage;
+  export default CoursePage;

@@ -16,8 +16,6 @@ const services = [
   },
 ];
 
-
-
 const ServicesSection = () => {
   const navigate = useNavigate();
 
@@ -49,7 +47,9 @@ const ServicesSection = () => {
               <motion.img
                 src={service.image}
                 alt={service.title}
-                className="w-full h-72 object-cover rounded-2xl transition-transform duration-700"
+                // Updated: Added 'object-top' to focus on the top part of the image
+                // Container height remains 'h-72' as requested
+                className="w-full h-72 object-cover object-top rounded-2xl transition-transform duration-700"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -81,7 +81,4 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection ;
-
-
- 
+export default ServicesSection;

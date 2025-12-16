@@ -141,11 +141,20 @@ function App() {
         <Route path='/courses/permanent-makeup/cert-scalp' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-laser-hair' element={<CoursePage/>}/>   
         <Route path='/courses/permanent-makeup/cert-skin-tech' element={<CoursePage/>}/>
+        <Route path='/courses/permanent-makeup/Medical-micropigmentation' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/master-chemical-peels' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/diploma-advanced' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/cert-professional' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/cert-hydrafacial' element={<CoursePage/>}/>
         <Route path='/courses/cosmetology/cert-chemical-peels' element={<CoursePage/>}/>
+
+
+
+
+        <Route path='/courses/facial-aesthetics/medical' element={<CoursePage/>}/>
+
+
+
         <Route path='/courses/facial-aesthetics/masters' element={<CoursePage/>}/>
         <Route path='/courses/facial-aesthetics/master-lipolytic' element={<CoursePage/>}/>
         <Route path='/courses/facial-aesthetics/master-nose' element={<CoursePage/>}/>

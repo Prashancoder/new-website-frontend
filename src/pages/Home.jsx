@@ -67,14 +67,9 @@ function Home() {
         <Footer /> */}
 
 
-
       {/* <ExploreCourses/> */}
-      <Cardspage/>
       {/* <ReviewPage/> */}
       <Footer/>
-
-      
-      
       
     </div>
 
