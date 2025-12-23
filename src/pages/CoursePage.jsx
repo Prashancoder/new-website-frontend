@@ -1340,16 +1340,14 @@ image: "/images/dr.png", // replace with actual image
     },
     videoUrl: "https://www.youtube.com/embed/dJRS8i3j8Fk"
   }
-
-
-
-
+  
   ,
   };
 
   const CoursePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    
     const auth = typeof useAuth === "function" ? useAuth() : null;
     const user = auth ? auth.user : null;
 
@@ -1369,30 +1367,43 @@ image: "/images/dr.png", // replace with actual image
             <div className="min-h-screen flex items-center justify-center bg-[#FAF8F6]">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-[#D4AF37] mx-auto"></div>
-                    <p className="mt-6 text-[#555] text-lg font-lato">Loading course information...</p>
+                    <p className="mt-6 text-[#555] text-lg font-lato">Loading...</p>
                 </div>
             </div>
         );
     }
 
-    if (!courseData) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-[#FAF8F6]">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold text-[#3B2F2F] mb-4">Course Not Found</h1>
-                    <button onClick={() => navigate("/")} className="px-4 py-2 rounded-md border-2 border-[#D4AF37] bg-white text-[#3B2F2F]">Return Home</button>
-                </div>
-            </div>
-        );
-    }
+    if (!courseData) return <div className="text-center py-20">Course Not Found</div>;
 
     return (
         <div className="min-h-screen bg-[#FAF8F6] flex flex-col font-lato">
             <Nav />
 
-            {/* Hero Section */}
+            {/* --- MOBILE VIEW: Start AFTER Navbar --- */}
+            <div className="block md:hidden pt-[70px] bg-white"> 
+                {/* pt-[70px] ensures it starts below the fixed navbar */}
+                {courseData.instructor?.courseDetailImage && (
+                    <div className="w-full">
+                        <img 
+                            src={courseData.instructor.courseDetailImage} 
+                            alt="Course Syllabus" 
+                            className="w-full h-auto object-contain"
+                        />
+                    </div>
+                )}
+                <div className="p-5 border-b-4 border-[#D4AF37]">
+                    <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.2em]">
+                        {courseData.category}
+                    </span>
+                    <h1 className="text-2xl font-bold text-[#3B2F2F] font-playfair uppercase mt-1 leading-tight">
+                        {courseData.title}
+                    </h1>
+                </div>
+            </div>
+
+            {/* --- DESKTOP VIEW: Hero Banner --- */}
             <div
-                className="relative text-white py-24 bg-cover bg-center bg-no-repeat"
+                className="hidden md:block relative text-white py-24 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${courseData.image})` }}
             >
                 <div className="container mx-auto px-4 text-center">
@@ -1409,152 +1420,79 @@ image: "/images/dr.png", // replace with actual image
             </div>
 
             {/* Main Content */}
-            <div className="container mx-auto px-4 py-16">
+            <div className="container mx-auto px-4 py-8 md:py-16">
                 <div className="grid lg:grid-cols-3 gap-10">
                     
                     {/* Left Content */}
                     <div className="lg:col-span-2 space-y-10">
                         {/* Instructor */}
                         {courseData.instructor && (
-                            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                                <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                    <div className="flex items-center gap-4">
-                                        <img src={courseData.instructor.image} alt={courseData.instructor.name} className="w-24 h-24 rounded-full object-cover border-2 border-[#D4AF37]" />
-                                        <div>
-                                            <h3 className="text-lg font-semibold text-[#3B2F2F]">{courseData.instructor.name}</h3>
-                                            <p className="text-[#555] text-sm">{courseData.instructor.bio}</p>
-                                            <p className="text-[#555] text-sm mt-1">{courseData.instructor.experience}</p>
-                                        </div>
+                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                                <div className="flex items-center gap-4">
+                                    <img src={courseData.instructor.image} alt={courseData.instructor.name} className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-[#D4AF37]" />
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-[#3B2F2F]">{courseData.instructor.name}</h3>
+                                        <p className="text-[#555] text-sm leading-snug">{courseData.instructor.bio}</p>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         )}
 
                         {/* Overview */}
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                                    <BookOpen className="h-5 w-5 text-[#D4AF37]" />
-                                    <h4 className="font-playfair">Course Overview</h4>
-                                </div>
-                                <p className="text-[#555] leading-relaxed text-lg">{courseData.description}</p>
-                                <span className="block w-16 h-1 bg-[#D4AF37] mt-4 rounded"></span>
-                            </div>
-                        </motion.div>
+                        <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                            <h4 className="font-playfair text-xl mb-4 flex items-center gap-2 text-[#3B2F2F]">
+                                <BookOpen className="h-5 w-5 text-[#D4AF37]" /> Course Overview
+                            </h4>
+                            <p className="text-[#555] leading-relaxed text-lg">{courseData.description}</p>
+                        </div>
 
                         {/* Student Reviews */}
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                                    <Star className="h-5 w-5 text-[#D4AF37]" />
-                                    <h4 className="font-playfair">Student Reviews</h4>
-                                </div>
-                                <div className="space-y-4">
-                                    {[{ name: "Priya Sharma", rating: 5, comment: "Amazing course! The instructor explained everything in detail." }, { name: "Rahul Verma", rating: 4, comment: "Great experience, learned a lot about laser techniques." }].map((review, index) => (
-                                        <div key={index} className="border-b border-[#D4AF37]/20 pb-3 mb-3">
-                                            <h4 className="font-semibold text-[#3B2F2F]">{review.name}</h4>
-                                            <p className="text-[#D4AF37]">{"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}</p>
-                                            <p className="text-[#555] text-sm">{review.comment}</p>
-                                        </div>
-                                    ))}
-                                </div>
+                        <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
+                            <h4 className="font-playfair text-xl mb-4 flex items-center gap-2 text-[#3B2F2F]">
+                                <Star className="h-5 w-5 text-[#D4AF37]" /> Student Reviews
+                            </h4>
+                            <div className="space-y-4">
+                                {[{ name: "Priya Sharma", rating: 5, comment: "Amazing course! Detailed training." }].map((review, index) => (
+                                    <div key={index} className="border-b border-[#D4AF37]/10 pb-3">
+                                        <h4 className="font-semibold text-[#3B2F2F]">{review.name}</h4>
+                                        <p className="text-[#D4AF37]">{"★".repeat(review.rating)}</p>
+                                        <p className="text-[#555] text-sm">"{review.comment}"</p>
+                                    </div>
+                                ))}
                             </div>
-                        </motion.div>
-
-                        {/* FAQs */}
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                                    <BookOpen className="h-5 w-5 text-[#D4AF37]" />
-                                    <h4 className="font-playfair">FAQs</h4>
-                                </div>
-                                <div className="space-y-4">
-                                    {[{ q: "Is prior experience required?", a: "Basic knowledge is preferred but beginners can join." }, { q: "Lifetime access?", a: "Yes, you get lifetime access to resources." }].map((faq, idx) => (
-                                        <div key={idx}>
-                                            <h4 className="font-semibold text-[#3B2F2F]">{faq.q}</h4>
-                                            <p className="text-[#555] text-sm">{faq.a}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Career Opportunities */}
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <div className="flex items-center gap-2 text-xl text-[#3B2F2F] mb-4">
-                                    <Award className="h-5 w-5 text-[#D4AF37]" />
-                                    <h4 className="font-playfair">Career Opportunities</h4>
-                                </div>
-                                <ul className="list-disc list-inside space-y-1 text-[#555]">
-                                    <li>Work as Laser Specialist in clinics</li>
-                                    <li>Start your own Aesthetic Studio</li>
-                                    <li>Become a Freelance Trainer</li>
-                                </ul>
-                            </div>
-                        </motion.div>
-
-                        {/* Gallery */}
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <h4 className="font-playfair text-xl mb-4">Gallery</h4>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                    {["/images/mm.webp", "/images/goo.jpg", "/images/faical.webp"].map((img, index) => (
-                                        <img key={index} src={img} alt="Gallery" className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform" />
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+                        </div>
                     </div>
 
-                    {/* Sidebar (Sticky) */}
+                    {/* Sidebar */}
                     <div className="lg:col-span-1">
-                        <div className="space-y-6 sticky top-8">
-                            {/* Course Info */}
+                        <div className="space-y-6 sticky top-24">
+                            
+                            {/* Desktop Syllabus Image */}
+                            {courseData.instructor?.courseDetailImage && (
+                                <div className="hidden md:block p-2 bg-white rounded-2xl shadow-xl border-2 border-[#D4AF37]/30">
+                                    <img src={courseData.instructor.courseDetailImage} alt="Syllabus" className="w-full h-auto rounded-xl" />
+                                    <p className="text-center text-[#3B2F2F] font-bold text-[10px] mt-2 uppercase tracking-widest">Full Course Syllabus</p>
+                                </div>
+                            )}
+
+                            {/* Price Card */}
                             <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/30">
-                                <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Information</h4>
-                                <div className="space-y-3">
-                                    <div className="flex justify-between items-center"><span className="text-[#555]">Duration:</span><span className="font-semibold">{courseData.duration}</span></div>
-                                    <div className="flex justify-between items-center"><span className="text-[#555]">Level:</span><span className="px-3 py-1 text-sm rounded-full border">{courseData.level}</span></div>
-                                    <div className="flex justify-between items-center"><span className="text-[#555]">Price:</span><span className="text-2xl font-bold text-[#D4AF37]">{courseData.price}</span></div>
-                                    <button onClick={() => navigate("/allcourses")} className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md border-2 border-[#D4AF37] bg-white text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white transition">
-                                        <ShoppingCart className="h-4 w-4" /> Enroll Now
+                                <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Enrollment Details</h4>
+                                <div className="space-y-4">
+                                    <div className="flex justify-between"><span className="text-[#555]">Duration:</span><span className="font-bold">{courseData.duration}</span></div>
+                                    <div className="flex justify-between"><span className="text-[#555]">Level:</span><span className="text-[#D4AF37] font-bold">{courseData.level}</span></div>
+                                    <div className="pt-2 border-t border-[#D4AF37]/20 flex justify-between items-center">
+                                        <span className="text-[#555]">Fee:</span>
+                                        <span className="text-2xl font-bold text-[#D4AF37]">{courseData.price}</span>
+                                    </div>
+                                    <button onClick={() => navigate("/allcourses")} className="w-full bg-[#D4AF37] text-white py-3 rounded-lg font-bold hover:bg-[#3B2F2F] transition-colors flex items-center justify-center gap-2 shadow-lg">
+                                        <ShoppingCart className="h-5 w-5" /> Enroll Now
                                     </button>
                                 </div>
                             </div>
-
-                            {/* Course Features Container */}
-                            <div className="p-6 bg-white rounded-2xl shadow-md border-2 border-[#D4AF37]/20">
-                                <h4 className="text-[#3B2F2F] font-playfair mb-4 text-lg">Course Features</h4>
-                                <div className="space-y-3">
-                                    {courseData.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-2 text-[#555]">
-                                            <Star className="h-4 w-4 text-[#D4AF37]" />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* UPDATED: Course Detail Image (NICHE FEATURES) */}
-                            {courseData.instructor?.courseDetailImage && (
-                                <motion.div 
-                                    initial={{ opacity: 0, y: 20 }} 
-                                    whileInView={{ opacity: 1, y: 0 }} 
-                                    className="p-2 bg-white rounded-2xl shadow-xl border-2 border-[#D4AF37]/30 overflow-hidden"
-                                >
-                                    <img 
-                                        src={courseData.instructor.courseDetailImage} 
-                                        alt="Detailed Knowledge" 
-                                        className="w-full h-auto rounded-xl object-cover hover:scale-[1.03] transition-transform duration-500"
-                                    />
-                                    <div className="p-3 text-center">
-                                        <p className="text-[#3B2F2F] font-playfair font-bold text-xs">Complete Course Syllabus & Guide</p>
-                                    </div>
-                                </motion.div>
-                            )}
                         </div>
                     </div>
+
                 </div>
             </div>
             <Footer />

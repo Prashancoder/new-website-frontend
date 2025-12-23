@@ -122,7 +122,7 @@ const ContactPage = () => {
       {/* Hero Section */}
       <div
         className="relative text-white py-20 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/images/contact.jpg')" }}
+        style={{ backgroundImage: "url('/images/courses/000.webp')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div> {/* overlay for readability */}
         <div className="container mx-auto px-4 relative z-10">

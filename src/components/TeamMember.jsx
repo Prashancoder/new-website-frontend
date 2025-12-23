@@ -171,7 +171,7 @@ const TeamMember = () => {
                   <button
                     className="inline-block px-5 py-2 border border-[#D4AF37] text-[#D4AF37] rounded-full text-xs font-semibold hover:bg-[#D4AF37] hover:text-white transition-colors duration-300"
                   >
-                    View Profile
+                    Read More
                   </button>
                 </div>
               </div>
