@@ -451,7 +451,7 @@ image: "/images/dr.png", // replace with actual image
         bio: "International trainer with 12+ years of expertise in Permanent Makeup, Lash & Brow Artistry.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
-        courseDetailImage: "/courses2/Certificate Course in lash lift & tint Brow lamination and tint.png" // Added here as well
+        courseDetailImage: "/courses2/1.jpeg"
     },
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
 },
