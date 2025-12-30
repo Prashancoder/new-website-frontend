@@ -15,7 +15,6 @@ import BlogSection from "../components/BlogSection";
 
 
 
-
 import AboutSection from "../components/AboutSection";
 import Cardspage from '../components/Cardspage';
 import ExploreCourses from '../components/ExploreCourses';

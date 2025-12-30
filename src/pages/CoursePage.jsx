@@ -410,6 +410,59 @@ image: "/images/dr.png", // replace with actual image
 
 
 
+"permanent-makeup/Medical-Micropigmentation": { 
+    title: "Certificate Course in Lash Lift & Tint, Brow Lamination and Tint",
+    description: "Master the art of eye enhancement with our specialized dual-certification course. Learn to create perfectly curled lashes and fluffy, groomed brows using professional lifting and tinting techniques that last for weeks.",
+    duration: "2 Days", // In procedures ke liye 2 din ideal hain
+    level: "Beginner to Intermediate",
+    category: "Lash & Brow Artistry",
+    price: "₹25,000", 
+    image: "/images/goo.jpg",
+    courseDetailImage: "/courses2/1.jpeg", // Added here
+    features: [
+        "Mastering Lash Lift & Tint",
+        "Brow Lamination & Tinting expertise",
+        "Eye anatomy and safety protocols",
+        "Hands-on practice on live models",
+        "Product chemistry and processing times",
+        "Kit advice and business branding",
+        "Lifetime post-training support"
+    ],
+    curriculum: [
+        "Anatomy of the Eye and Hair Growth Cycle",
+        "Client Consultation & Patch Testing",
+        "Lash Lift Procedure: Step-by-Step Mastery",
+        "Lash Tinting: Customizing shades for clients",
+        "Brow Lamination: Mapping & Styling",
+        "Brow Tinting & Shaping techniques",
+        "Sanitization, Hygiene & Aftercare Protocols",
+        "Client Troubleshooting & Maintenance",
+        "Business setup and pricing your services"
+    ],
+    requirements: [
+        "A keen eye for detail and steady hands",
+        "Valid ID proof",
+        "Interest in eye aesthetics",
+        "No prior beauty experience required"
+    ],
+    certification: "Certificate in Professional Lash Lift, Brow Lamination & Tinting",
+    instructor: {
+        name: "Dr. Aesthetic Kumar",
+        bio: "International trainer with 12+ years of expertise in Permanent Makeup, Lash & Brow Artistry.",
+        experience: "Trained 500+ professionals globally",
+        image: "/images/dr.png",
+        courseDetailImage: "/courses2/Certificate Course in lash lift & tint Brow lamination and tint.png" // Added here as well
+    },
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+},
+
+
+
+
+
+
+
+
           // Cosmetology Courses
 "cosmetology/master-chemical-peels": {
   title: "Certificate in Professional Cosmetology",
@@ -419,6 +472,7 @@ image: "/images/dr.png", // replace with actual image
   category: "Cosmetology",
   price: "₹1,20,000", // Standard professional course price (aap change kar sakte hain)
   image: "/images/goo.jpg",
+  courseDetailImage: "/courses2/cosmotolgy/1.png", 
   features: [
       "Hands-on training in skin & hair care",
       "Advanced facial & chemical peel techniques",
@@ -449,8 +503,8 @@ image: "/images/dr.png", // replace with actual image
       bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
       experience: "Trained 500+ professionals globally",
       image: "/images/dr.png",
-      courseDetailImage: "/courses2/1.jpeg"
-  },
+      courseDetailImage: "/courses2/cosmotolgy/1.png", 
+    },
   videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   courseDetailImage: "/courses2/1.jpeg"
 },
@@ -502,7 +556,7 @@ image: "/images/dr.png", // replace with actual image
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
-        courseDetailImage: "/courses2/1.jpeg"
+        courseDetailImage: "/courses2/cosmotolgy/2.png"
     },
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     courseDetailImage: "/courses2/1.jpeg"

@@ -34,7 +34,7 @@ const courses = [
   },
   {
     title: "Master class in Medical Micropigmentation",
-    link: "/courses/permanent-makeup/cert-lip",
+    link: "/courses/permanent-makeup/Medical-Micropigmentation",
     description:
       "Get certified in lip tinting and micropigmentation with modern techniques.",
     image: "/images/courses/2.webp",

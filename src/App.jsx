@@ -130,13 +130,20 @@ function App() {
 
 
 
-
+      
 
         {/* Specific Course Routes - handled by CoursePage */}
         <Route path='/courses/permanent-makeup/masters-eyebrows' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/master-scalp' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/pg-diploma' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-lip' element={<CoursePage/>}/>
+
+        
+        <Route path='/courses/permanent-makeup/Medical-Micropigmentation' element={<CoursePage/>}/>
+
+
+
+
         <Route path='/courses/permanent-makeup/cert-brows-lash' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-scalp' element={<CoursePage/>}/>
         <Route path='/courses/permanent-makeup/cert-laser-hair' element={<CoursePage/>}/>   
