@@ -5,16 +5,66 @@ import Header from "../components/Nav";
 import Footer from "../components/Footer";
 
 const courses = [
-  { title: "Masters in Aesthetics Medicine", link: "/courses/facial-aesthetics/medical", description: "Comprehensive master program covering injectables and rejuvenation.", image: "/images/courses/1.webp" },
-  { title: "Masters in Facial Aesthetics", link: "/courses/facial-aesthetics/masters", description: "Comprehensive master program covering injectables and rejuvenation.", image: "/images/courses/000.webp" },
-  { title: "Master Class In Lipolytic Injections", link: "/courses/facial-aesthetics/master-lipolytic", description: "Targeted fat reduction techniques with safety protocols.", image: "/images/courses/1.webp" },
-  { title: "Master Class in Nose correction", link: "/courses/facial-aesthetics/master-nose", description: "Non-surgical nose correction using advanced filler methods.", image: "/images/courses/2.webp" },
-  { title: "Master Class In Acne Scar Treatment", link: "/courses/facial-aesthetics/master-acne", description: "Evidence-based multi-modality acne scar management.", image: "/images/courses/3.webp" },
-  { title: "Masters Class in Plasma Pen", link: "/courses/facial-aesthetics/master-plasma", description: "Skin tightening and resurfacing using plasma devices.", image: "/images/courses/222.jpg" },
-  { title: "Master class in Under eye rejuvenation", link: "/courses/facial-aesthetics/master-undereye", description: "Under eye hollows, pigmentation and fine-line correction.", image: "/images/courses/1.webp" },
-  { title: "Master class in Lip Fillers", link: "/courses/facial-aesthetics/master-fillers", description: "Aesthetic lip shaping, ratios and injection safety.", image: "/images/courses/2.webp" },
-  { title: "PG Diploma in Facial Aesthetics", link: "/courses/facial-aesthetics/pg-diploma", description: "In-depth diploma program across facial aesthetic domains.", image: "/images/courses/3.webp" },
-  { title: "Certificate Course in Lipolytic Injections", link: "/courses/facial-aesthetics/cert-lipolytic", description: "Fundamentals and hands-on certification in lipolytic injections.", image: "/images/courses/222.jpg" },
+  { 
+    title: "Masters in Aesthetics Medicine", 
+    link: "/courses/facial-aesthetics/medical", 
+    description: "An advanced clinical program integrating medical pharmacology with the latest facial rejuvenation and injectable technologies.", 
+    image: "/images/courses/1.webp" 
+  },
+  { 
+    title: "Masters in Facial Aesthetics", 
+    link: "/courses/facial-aesthetics/masters", 
+    description: "Master the art of full-face restoration, focusing on volume replacement, wrinkle relaxation, and aesthetic symmetry.", 
+    image: "/images/courses/000.webp" 
+  },
+  { 
+    title: "Master Class In Lipolytic Injections", 
+    link: "/courses/facial-aesthetics/master-lipolytic", 
+    description: "Expert training in non-surgical fat dissolution techniques for submental and body contouring with clinical safety standards.", 
+    image: "/images/courses/1.webp" 
+  },
+  { 
+    title: "Master Class in Nose correction", 
+    link: "/courses/facial-aesthetics/master-nose", 
+    description: "Learn high-precision liquid rhinoplasty techniques to correct dorsal humps and lift nasal tips using advanced fillers.", 
+    image: "/images/courses/2.webp" 
+  },
+  { 
+    title: "Master Class In Acne Scar Treatment", 
+    link: "/courses/facial-aesthetics/master-acne", 
+    description: "Comprehensive management of post-acne scarring using a multi-modality approach including subcision and resurfacing.", 
+    image: "/images/courses/3.webp" 
+  },
+  { 
+    title: "Masters Class in Plasma Pen", 
+    link: "/courses/facial-aesthetics/master-plasma", 
+    description: "Specialized training in fibroblast plasma technology for non-invasive skin tightening and eyelid rejuvenation.", 
+    image: "/images/courses/222.jpg" 
+  },
+  { 
+    title: "Master class in Under eye rejuvenation", 
+    link: "/courses/facial-aesthetics/master-undereye", 
+    description: "Address dark circles, tear troughs, and periorbital aging with advanced injectable and skin quality protocols.", 
+    image: "/images/courses/1.webp" 
+  },
+  { 
+    title: "Master class in Lip Fillers", 
+    link: "/courses/facial-aesthetics/master-fillers", 
+    description: "Focus on the 'Golden Ratio' and advanced injection mapping to achieve natural volume and defined lip contours.", 
+    image: "/images/courses/2.webp" 
+  },
+  { 
+    title: "PG Diploma in Facial Aesthetics", 
+    link: "/courses/facial-aesthetics/pg-diploma", 
+    description: "A deep-dive diploma program covering the complete spectrum of non-surgical facial aesthetic medicine.", 
+    image: "/images/courses/3.webp" 
+  },
+  { 
+    title: "Certificate Course in Lipolytic Injections", 
+    link: "/courses/facial-aesthetics/cert-lipolytic", 
+    description: "Foundational certification for medical practitioners entering the field of non-surgical fat reduction therapy.", 
+    image: "/images/courses/222.jpg" 
+  },
 ];
 
 function FacialAestheticsPage() {
@@ -30,12 +80,12 @@ function FacialAestheticsPage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative text-center text-white z-10">
+        <div className="relative text-center text-white z-10 px-4">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl font-playfair font-bold tracking-wide uppercase"
+            className="text-4xl md:text-5xl font-playfair font-bold tracking-wide uppercase"
           >
             Facial Aesthetics
           </motion.h1>
@@ -60,7 +110,7 @@ function FacialAestheticsPage() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="rounded-xl shadow-xl border-2 border-[#D4AF37] hover:scale-105 transition-transform duration-300"
+            className="rounded-xl shadow-xl border-2 border-[#D4AF37] hover:scale-105 transition-transform duration-300 w-full"
           />
 
           {/* Right Content */}
@@ -71,15 +121,18 @@ function FacialAestheticsPage() {
             className="text-left"
           >
             <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#3B2F2F] mb-4 uppercase tracking-wide">
-              About the <span className="text-[#D4AF37]">Course</span>
+              Aesthetic <span className="text-[#D4AF37]">Excellence</span>
             </h2>
             <span className="block w-16 h-1 bg-[#D4AF37] mt-2 mb-6 rounded"></span>
             <p className="text-lg text-[#555555] font-lato leading-relaxed mb-6">
-              Master injectables, skin rejuvenation, and non-surgical facial enhancement with clinical precision.
+              Our Facial Aesthetics curriculum is designed for medical professionals looking to master the art of non-surgical rejuvenation. We focus on a combination of deep anatomical knowledge and refined artistic vision.
+            </p>
+            <p className="text-lg text-[#555555] font-lato leading-relaxed mb-6">
+              From mastering the complex <strong>Golden Ratio</strong> in lip augmentation to safely performing liquid rhinoplasty, our hands-on modules ensure clinical precision and world-class patient outcomes.
             </p>
             <Link
               to="/contact"
-              className="inline-block px-6 py-3 border-2 border-[#D4AF37] text-[#D4AF37] rounded-full font-medium font-lato tracking-wide hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300"
+              className="inline-block px-8 py-3 border-2 border-[#D4AF37] text-[#D4AF37] rounded-full font-medium font-lato tracking-wide hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300 shadow-md"
             >
               Enroll Now
             </Link>
@@ -95,30 +148,30 @@ function FacialAestheticsPage() {
           transition={{ duration: 0.8 }}
           className="text-4xl font-playfair font-bold text-center text-[#3B2F2F] mb-12 uppercase"
         >
-          Available <span className="text-[#D4AF37]">Courses</span>
+          Specialized <span className="text-[#D4AF37]">Curriculum</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {courses.map((course) => (
             <div
               key={course.title}
-              className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
             >
               <img
                 src={course.image}
                 alt={course.title}
                 className="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-playfair font-semibold text-[#3B2F2F] mb-3">
                   {course.title}
                 </h3>
-                <p className="text-[#555555] font-lato text-sm mb-4">
+                <p className="text-[#555555] font-lato text-sm mb-6 flex-grow">
                   {course.description}
                 </p>
                 <Link
                   to={course.link}
-                  className="inline-block px-5 py-2 border-2 border-[#D4AF37] text-[#D4AF37] rounded-full text-sm font-medium font-lato hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300"
+                  className="inline-block px-5 py-2 mt-auto border-2 border-[#D4AF37] text-[#D4AF37] rounded-full text-sm font-medium font-lato text-center hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300"
                 >
                   Learn More →
                 </Link>
@@ -131,6 +184,7 @@ function FacialAestheticsPage() {
       <Footer />
     </>
   );
+
 }
 
 export default FacialAestheticsPage;

@@ -223,7 +223,7 @@ function Nav() {
                 ]
               },
               {
-                label: 'Fellowship Courses',
+                label: 'Fellowship',
                 submenu: [
                   { label: 'Fellowship in Permanent Make up and Cosmetology', link: '/courses/fellowship/permanent-cosmetology' },
                   { label: 'Fellowship in Facial Aesthetics, Permanent Make up & Cosmetology', link: '/courses/fellowship/facial-permanent-cosmetology' },
@@ -231,7 +231,23 @@ function Nav() {
                   { label: 'Fellowship in Permanent Make up & Cosmetology, Medical Micropigmentation , Plasma Pen', link: '/courses/fellowship/permanent-micropigmentation' },
                   { label: 'Fellowship in Facial Aesthetics, Permanent Make up & Cosmetology, Medical Micropigmentation , Plasma Pen', link: '/courses/fellowship/facial-permanent-micropigmentation' }
                 ]
+              },
+
+
+
+              {
+                label: 'Laser Practise',
+                submenu: [
+                  { label: 'Fellowship in Permanent make up and cosmetology', link: '/courses/fellowship/permanent-cosmetology' },
+                  { label: 'Fellowship in Facial Aesthetics, Permanent Make up & Cosmetology', link: '/courses/fellowship/facial-permanent-cosmetology' },
+                    ]
               }
+
+
+
+
+
+
             ]
           },
           {
