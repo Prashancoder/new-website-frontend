@@ -211,10 +211,12 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
         bio: "International trainer with 12+ years of expertise in Medical Micropigmentation & Restorative Aesthetics.",
         experience: "Trained 500+ professionals globally in clinical PMU",
         image: "/images/dr.png",
-        courseDetailImage: "/courses2/1.jpeg"
+        courseDetailImage: "/Permanent Makeup/Lip_Blush_&_Neutralization.png"
     },
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     courseDetailImage: "/courses2/1.jpeg"
+    
+
 },
 
 
@@ -365,7 +367,7 @@ image: "/images/dr.png", // replace with actual image
     category: "Lash & Brow Artistry",
     price: "₹25,000", 
     image: "/images/goo.jpg",
-    courseDetailImage: "/courses2/1.jpeg", // Added here
+    courseDetailImage: "/PermanentMakeup/Lash_Lift_&_Brow_Lamination.png", // Added here
     features: [
         "Mastering Lash Lift & Tint",
         "Brow Lamination & Tinting expertise",
