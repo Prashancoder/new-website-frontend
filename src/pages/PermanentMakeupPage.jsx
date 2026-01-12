@@ -16,43 +16,43 @@ const courses = [
     link: "/courses/permanent-makeup/masters-eyebrows",
     description:
       "An advanced program focusing on 6D Microblading, Ombré Shading, and Powder Brows for a flawless finish.",
-    image: "/images/courses/222.jpg",
+    image: "/Permanent Makeup/Banner_Cover/1.png",
   },
   {
     title: "PG Diploma in Permanent Makeup",
     link: "/courses/permanent-makeup/pg-diploma",
     description:
       "A comprehensive clinical diploma covering Brows, Lips, Eyeliner, and Color Theory for aspiring professionals.",
-    image: "/images/courses/1.webp",
-  },
+      image: "/Permanent Makeup/Banner_Cover/2.png",
+    },
   {
     title: "Masterclass in Scalp Micropigmentation",
     link: "/courses/permanent-makeup/master-scalp",
     description:
       "Learn the art of non-surgical hair restoration, creating the illusion of fuller hair follicles.",
-    image: "/images/courses/000.webp",
-  },
+      image: "/Permanent Makeup/Banner_Cover/3.png",
+    },
   {
     title: "Medical Micropigmentation",
     link: "/courses/permanent-makeup/Medical-Micropigmentation",
     description:
       "Specialized training in Areola reconstruction, Vitiligo camouflage, and Scar revision techniques.",
-    image: "/images/courses/2.webp",
-  },
+      image: "/Permanent Makeup/Banner_Cover/4.png",
+    },
   {
     title: "Lash Lift & Brow Lamination",
     link: "/courses/permanent-makeup/cert-skin-tech",
     description:
       "Master the trending semi-permanent treatments to enhance natural lashes and brow symmetry.",
-    image: "/images/courses/222.jpg",
-  },
+      image: "/Permanent Makeup/Banner_Cover/5.png",
+    },
   {
     title: "Lip Blush & Neutralization",
     link: "/courses/permanent-makeup/Medical-micropigmentation",
     description:
       "Techniques for defining lip contours and neutralizing dark pigments for a natural tint.",
-    image: "/images/courses/222.jpg",
-  },
+      image: "/Permanent Makeup/Banner_Cover/6.png",
+    },
 ];
 
 const PermanentMakeupPage = () => {
@@ -63,7 +63,7 @@ const PermanentMakeupPage = () => {
       {/* Hero Section */}
       <div className="relative h-[450px] flex items-center justify-center">
         <img
-          src="/images/filler.jpg"
+          src="/Permanent Makeup/Banner_Cover/Top_Main Banner.png"
           alt="Permanent Makeup Training"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -98,7 +98,7 @@ const PermanentMakeupPage = () => {
             className="relative"
           >
             <img
-              src="/images/goo.jpg"
+              src="/Permanent Makeup/Banner_Cover/Middle_Main Banner.png"
               alt="PMU Training Session"
               className="rounded-xl shadow-2xl border-b-8 border-r-8 border-[#D4AF37]"
             />

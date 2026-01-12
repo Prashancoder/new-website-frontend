@@ -2,9 +2,6 @@ import React from 'react'
 import home from "../assets/4.jfif"
 import Nav from '../components/Nav'
 import { SiViaplay } from "react-icons/si";
-
-
-
 import ServicesSection from "../components/ServicesSection";
 import TeamMember from "../components/TeamMember";
 import FeaturedClients from "../components/FeaturedClients";
@@ -12,9 +9,6 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import BeforeAfterResults from "../components/BeforeAfterResults";
 import FAQ from "../components/FAQ";
 import BlogSection from "../components/BlogSection";
-
-
-
 import AboutSection from "../components/AboutSection";
 import Cardspage from '../components/Cardspage';
 import ExploreCourses from '../components/ExploreCourses';
@@ -25,6 +19,7 @@ import ReviewPage from '../components/ReviewPage';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 function Home() {
+  
       const navigate = useNavigate()
 
   return (
