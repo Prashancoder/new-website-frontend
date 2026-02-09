@@ -19,7 +19,7 @@ const BlogDetail = () => {
   const fetchBlog = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8000/api/blogs/slug/${slug}`);
+      const response = await fetch(`https://new-website-backend-2.onrender.com/api/blogs/slug/${slug}`);
       const data = await response.json();
       
       if (data.success) {
