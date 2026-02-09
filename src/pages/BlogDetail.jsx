@@ -9,8 +9,11 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const THEME_COLOR = "#D4AF37"; // Gold Theme
+
   useEffect(() => {
     fetchBlog();
+    window.scrollTo(0, 0);
   }, [slug]);
 
   const fetchBlog = async () => {
@@ -21,34 +24,32 @@ const BlogDetail = () => {
       
       if (data.success) {
         setBlog(data.data);
-        // Update page title
-        document.title = `${data.data.title} - Timeless Aesthetics Blog`;
+        document.title = `${data.data.title} | Timeless Aesthetics`;
       } else {
-        setError('Blog not found');
+        setError('Blog post not found');
       }
     } catch (error) {
-      setError('Error connecting to server');
-      console.error('Error fetching blog:', error);
+      setError('Connection failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  const createMarkup = (htmlContent) => {
-    return { __html: htmlContent };
+    return new Date(dateString).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
   };
 
   if (loading) {
     return (
-      <div className='w-[100%] overflow-hidden'>
+      <div className='w-full'>
         <Nav />
-        <div className='min-h-screen bg-gray-50 flex justify-center items-center'>
-          <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600'></div>
+        <div className='min-h-screen flex flex-col justify-center items-center bg-white'>
+          <div className='w-12 h-12 border-4 border-gray-100 border-t-[#D4AF37] rounded-full animate-spin'></div>
+          <p className='mt-4 text-xs font-bold uppercase tracking-widest text-gray-400'>Loading Story</p>
         </div>
         <Footer />
       </div>
@@ -57,16 +58,13 @@ const BlogDetail = () => {
 
   if (error || !blog) {
     return (
-      <div className='w-[100%] overflow-hidden'>
+      <div className='w-full'>
         <Nav />
-        <div className='min-h-screen bg-gray-50 flex flex-col justify-center items-center'>
-          <h1 className='text-4xl font-bold text-gray-900 mb-4'>Blog Not Found</h1>
-          <p className='text-lg text-gray-600 mb-8'>{error || 'The blog post you are looking for does not exist.'}</p>
-          <Link 
-            to='/blogs'
-            className='px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
-          >
-            Back to Blogs
+        <div className='min-h-[70vh] flex flex-col justify-center items-center px-4'>
+          <h1 className='text-6xl font-serif text-gray-200 mb-4'>404</h1>
+          <p className='text-gray-500 mb-8'>{error || 'Content missing'}</p>
+          <Link to='/blogs' className='px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37] transition-all'>
+            Explore Other Blogs
           </Link>
         </div>
         <Footer />
@@ -75,79 +73,82 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className='w-[100%] overflow-hidden'>
+    <div className='w-full bg-white'>
       <Nav />
       
-      <article className='min-h-screen bg-white'>
-        {/* Header Image */}
+      <article className='pt-24 pb-20'>
+        {/* Header Section */}
+        <header className='max-w-4xl mx-auto px-4 text-center mb-12'>
+          <div className='flex items-center justify-center space-x-3 mb-6'>
+            <span className='h-[1px] w-8 bg-[#D4AF37]'></span>
+            <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]'>
+              {blog.author} • {formatDate(blog.createdAt)}
+            </span>
+            <span className='h-[1px] w-8 bg-[#D4AF37]'></span>
+          </div>
+          
+          <h1 className='text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-8 leading-[1.15]'>
+            {blog.title}
+          </h1>
+
+          {blog.metaDescription && (
+            <p className='text-lg md:text-xl text-gray-500 font-light italic leading-relaxed max-w-3xl mx-auto'>
+              "{blog.metaDescription}"
+            </p>
+          )}
+        </header>
+
+        {/* Feature Image */}
         {blog.thumbnail && (
-          <div className='w-full h-64 md:h-96 overflow-hidden'>
-            <img 
-              src={blog.thumbnail} 
-              alt={blog.title}
-              className='w-full h-full object-cover'
-            />
+          <div className='max-w-6xl mx-auto px-4 mb-16'>
+            <div className='aspect-video overflow-hidden rounded-sm shadow-2xl'>
+              <img 
+                src={blog.thumbnail} 
+                alt={blog.title}
+                className='w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000'
+              />
+            </div>
           </div>
         )}
 
-        <div className='max-w-4xl mx-auto px-4 py-12 md:py-16'>
-          {/* Blog Header */}
-          <header className='mb-8'>
-            <div className='flex items-center justify-between mb-4'>
-              <span className='text-sm text-gray-500'>
-                {formatDate(blog.createdAt)}
-              </span>
-              <span className='text-sm text-blue-600 font-medium'>
-                {blog.author}
-              </span>
-            </div>
-            
-            <h1 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight'>
-              {blog.title}
-            </h1>
-            
-            {blog.metaDescription && (
-              <p className='text-xl text-gray-600 leading-relaxed'>
-                {blog.metaDescription}
-              </p>
-            )}
-          </header>
+        {/* Article Body */}
+        <div className='max-w-3xl mx-auto px-6'>
+          <style>{`
+            .blog-content h2 { font-size: 2rem; font-weight: 700; color: #111; margin-top: 2.5rem; margin-bottom: 1.2rem; font-family: serif; border-left: 4px solid #D4AF37; padding-left: 1rem; }
+            .blog-content h3 { font-size: 1.5rem; font-weight: 600; color: #333; margin-top: 2rem; margin-bottom: 1rem; }
+            .blog-content p { font-size: 1.125rem; line-height: 1.9; color: #4b5563; margin-bottom: 1.5rem; font-weight: 300; }
+            .blog-content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc; color: #D4AF37; }
+            .blog-content ul li { color: #4b5563; margin-bottom: 0.5rem; }
+            .blog-content strong { color: #111; font-weight: 600; }
+          `}</style>
 
-          {/* Blog Content */}
-          <div className='prose prose-lg max-w-none'>
-            <div 
-              dangerouslySetInnerHTML={createMarkup(blog.content)}
-              className='blog-content'
-              style={{
-                lineHeight: '1.8',
-                color: '#374151'
-              }}
-            />
+          <div 
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+            className='blog-content'
+          />
+
+          {/* Share / Footer */}
+          <div className='mt-20 pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0'>
+            <div className='flex items-center space-x-4'>
+               <div className='w-12 h-12 bg-gray-900 flex items-center justify-center text-[#D4AF37] font-serif text-xl rounded-full'>
+                 {blog.author.charAt(0)}
+               </div>
+               <div>
+                 <p className='text-[10px] uppercase tracking-widest text-gray-400 font-bold'>Written by</p>
+                 <p className='text-sm font-bold text-gray-900'>{blog.author}</p>
+               </div>
+            </div>
+
+            <Link 
+              to='/blogs'
+              className='flex items-center text-[10px] font-bold uppercase tracking-widest text-gray-900 border-b-2 border-[#D4AF37] pb-1 hover:opacity-60 transition-all'
+            >
+              <svg className='w-4 h-4 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 19l-7-7m0 0l7-7m-7 7h18' />
+              </svg>
+              All Articles
+            </Link>
           </div>
-
-          {/* Blog Footer */}
-          <footer className='mt-12 pt-8 border-t border-gray-200'>
-            <div className='flex flex-col md:flex-row justify-between items-center'>
-              <div className='mb-4 md:mb-0'>
-                <p className='text-sm text-gray-600'>
-                  Published by <span className='font-medium'>{blog.author}</span>
-                </p>
-                <p className='text-sm text-gray-500'>
-                  {formatDate(blog.createdAt)}
-                </p>
-              </div>
-              
-              <Link 
-                to='/blogs'
-                className='inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
-              >
-                <svg className='w-4 h-4 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 19l-7-7m0 0l7-7m-7 7h18' />
-                </svg>
-                Back to Blogs
-              </Link>
-            </div>
-          </footer>
         </div>
       </article>
       

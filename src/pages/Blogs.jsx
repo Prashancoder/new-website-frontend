@@ -10,8 +10,11 @@ const Blogs = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  const THEME_COLOR = "#D4AF37"; // Aapka Gold Color
+
   useEffect(() => {
     fetchBlogs();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page]);
 
   const fetchBlogs = async () => {
@@ -24,136 +27,126 @@ const Blogs = () => {
         setBlogs(data.data);
         setTotalPages(data.pagination.pages);
       } else {
-        setError('Failed to fetch blogs');
+        setError('Unable to load blogs at the moment.');
       }
     } catch (error) {
-      setError('Error connecting to server');
-      console.error('Error fetching blogs:', error);
+      setError('Server connection error.');
+      console.error('Error:', error);
     } finally {
       setLoading(false);
     }
   };
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  const truncateContent = (content, maxLength = 150) => {
-    if (!content) return '';
-    const plainText = content.replace(/<[^>]*>/g, ''); // Remove HTML tags
-    return plainText.length > maxLength ? plainText.substring(0, maxLength) + '...' : plainText;
+    return new Date(dateString).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
   };
 
   return (
-    <div className='w-[100%] overflow-hidden'>
+    <div className='w-full bg-white'>
       <Nav />
       
-      <div className='min-h-screen bg-gray-50 py-26 px-4'>
+      {/* Header Section */}
+      <div className='pt-32 pb-16 px-4 border-b border-gray-100'>
         <div className='max-w-7xl mx-auto'>
-          <div className='text-center mb-12'>
-            <h1 className='text-4xl font-bold text-gray-900 mb-4'>
-              Our Blog
-            </h1>
-            <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-              Stay updated with the latest trends, tips, and insights in aesthetics and beauty
-            </p>
-          </div>
-
-          {loading ? (
-            <div className='flex justify-center items-center py-20'>
-              <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600'></div>
-            </div>
-          ) : error ? (
-            <div className='text-center py-20'>
-              <p className='text-red-600 text-lg'>{error}</p>
-              <button 
-                onClick={fetchBlogs}
-                className='mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
-              >
-                Try Again
-              </button>
-            </div>
-          ) : blogs.length === 0 ? (
-            <div className='text-center py-20'>
-              <p className='text-gray-600 text-lg'>No blogs found</p>
-            </div>
-          ) : (
-            <>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                {blogs.map((blog) => (
-                  <article key={blog._id} className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'>
-                    {blog.thumbnail && (
-                      <img 
-                        src={blog.thumbnail} 
-                        alt={blog.title}
-                        className='w-full h-48 object-cover'
-                      />
-                    )}
-                    <div className='p-6'>
-                      <div className='flex items-center justify-between mb-3'>
-                        <span className='text-sm text-gray-500'>
-                          {formatDate(blog.createdAt)}
-                        </span>
-                        <span className='text-sm text-blue-600 font-medium'>
-                          {blog.author}
-                        </span>
-                      </div>
-                      
-                      <h2 className='text-xl font-bold text-gray-900 mb-3 line-clamp-2'>
-                        <Link 
-                          to={`/blogs/${blog.slug}`}
-                          className='hover:text-blue-600 transition-colors'
-                        >
-                          {blog.title}
-                        </Link>
-                      </h2>
-                      
-                      <p className='text-gray-600 mb-4 line-clamp-3'>
-                        {blog.metaDescription || truncateContent(blog.content)}
-                      </p>
-                      
-                      <Link 
-                        to={`/blogs/${blog.slug}`}
-                        className='inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors'
-                      >
-                        Read More
-                        <svg className='w-4 h-4 ml-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                        </svg>
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className='flex justify-center items-center mt-12 space-x-4'>
-                  <button
-                    onClick={() => setPage(prev => Math.max(prev - 1, 1))}
-                    disabled={page === 1}
-                    className='px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
-                  >
-                    Previous
-                  </button>
-                  
-                  <span className='text-gray-600'>
-                    Page {page} of {totalPages}
-                  </span>
-                  
-                  <button
-                    onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
-                    disabled={page === totalPages}
-                    className='px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
-            </>
-          )}
+          <h1 className='text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2'>
+            Timeless <span style={{ color: THEME_COLOR }}>Blogs</span>
+          </h1>
+          <p className='text-gray-500 text-sm tracking-wide uppercase'>
+            Latest Trends in Permanent Makeup & Aesthetics
+          </p>
         </div>
+      </div>
+
+      <div className='max-w-7xl mx-auto px-4 py-12'>
+        {loading ? (
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            {[1, 2, 3].map((i) => (
+              <div key={i} className='h-80 bg-gray-50 animate-pulse rounded-lg'></div>
+            ))}
+          </div>
+        ) : error ? (
+          <div className='text-center py-20'>
+            <p className='text-gray-600 mb-4'>{error}</p>
+            <button 
+              onClick={fetchBlogs} 
+              className='px-6 py-2 border rounded-md transition-all'
+              style={{ borderColor: THEME_COLOR, color: THEME_COLOR }}
+            >
+              Retry
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+              {blogs.map((blog) => (
+                <article key={blog._id} className='group border-b border-gray-100 pb-8'>
+                  <Link to={`/blogs/${blog.slug}`} className='block mb-5 overflow-hidden rounded-sm'>
+                    <img 
+                      src={blog.thumbnail || 'https://via.placeholder.com/600x400'} 
+                      alt={blog.title}
+                      className='w-full h-60 object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500'
+                    />
+                  </Link>
+
+                  <div className='space-y-3'>
+                    <div className='flex items-center text-[10px] tracking-widest uppercase text-gray-400 font-bold'>
+                      <span>{formatDate(blog.createdAt)}</span>
+                      <span className='mx-2'>|</span>
+                      <span style={{ color: THEME_COLOR }}>{blog.author}</span>
+                    </div>
+                    
+                    <h2 className='text-xl font-semibold text-gray-900 leading-tight group-hover:opacity-70 transition-opacity'>
+                      <Link to={`/blogs/${blog.slug}`}>{blog.title}</Link>
+                    </h2>
+                    
+                    <p className='text-gray-600 text-sm line-clamp-2 font-light leading-relaxed'>
+                      {blog.metaDescription || "Click to read the full clinical insights on this procedure."}
+                    </p>
+                    
+                    <Link 
+                      to={`/blogs/${blog.slug}`}
+                      className='inline-block pt-2 text-xs font-bold uppercase tracking-tighter border-b-2 transition-all'
+                      style={{ borderBottomColor: THEME_COLOR }}
+                    >
+                      Read Full Story
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className='flex justify-center items-center mt-16 space-x-6'>
+                <button
+                  onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+                  disabled={page === 1}
+                  className='text-sm uppercase tracking-widest disabled:opacity-30'
+                  style={{ color: page === 1 ? '#ccc' : THEME_COLOR }}
+                >
+                  Prev
+                </button>
+                
+                <span className='text-xs font-bold text-gray-400'>
+                  {page} / {totalPages}
+                </span>
+                
+                <button
+                  onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={page === totalPages}
+                  className='text-sm uppercase tracking-widest disabled:opacity-30'
+                  style={{ color: page === totalPages ? '#ccc' : THEME_COLOR }}
+                >
+                  Next
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
       
       <Footer />
