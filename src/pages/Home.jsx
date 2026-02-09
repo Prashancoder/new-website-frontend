@@ -13,6 +13,7 @@ import AboutSection from "../components/AboutSection";
 import Cardspage from '../components/Cardspage';
 import ExploreCourses from '../components/ExploreCourses';
 import About from '../components/About';
+import ClientTestimonials from '../components/ClientTestimonials';
 import ai from '../assets/ai.png'
 import ai1 from '../assets/SearchAi.png'
 import ReviewPage from '../components/ReviewPage';
@@ -46,6 +47,7 @@ function Home() {
      <About/>
       <TeamMember />
       <FeaturedClients />
+      <ClientTestimonials />
       <WhyChooseUs />
       <BeforeAfterResults />
       <FAQ />
