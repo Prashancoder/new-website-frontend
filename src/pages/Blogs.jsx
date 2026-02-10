@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 // const serverUrl = "https://new-website-backend-2.onrender.com"
 const serverUrl = "https://new-website-backend-2.onrender.com"
 
+
+
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
