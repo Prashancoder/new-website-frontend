@@ -72,8 +72,8 @@ import DemoRoutes from './pages/DemoRoutes'
 import TestRoute from './pages/TestRoute'
 import BookAppointment from './pages/BookAppointment'
 
-export const serverUrl = "https://new-website-backend-2.onrender.com"
-//  export const serverUrl = "http://localhost:8000"
+// export const serverUrl = "https://new-website-backend-2.onrender.com"
+ export const serverUrl = "https://new-website-backend-2.onrender.com"
 
 function App() {
   
@@ -94,9 +94,17 @@ function App() {
         <Route path='/blog' element={<Blog/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/blogs/:slug' element={<BlogDetail/>}/>
-        <Route path='/admin/blog/create' element={userData?<BlogCreate/>:<Navigate to={"/login"}/>}/>
-        <Route path='/admin/blog/edit/:id' element={userData?<BlogEdit/>:<Navigate to={"/login"}/>}/>
-        <Route path='/admin/blogs' element={userData?<BlogManage/>:<Navigate to={"/login"}/>}/>
+        {/* <Route path='/admin/blog/create' element={userData?<BlogCreate/>:<Navigate to={"/login"}/>}/> */}
+        {/* <Route path='/admin/blog/edit/:id' element={userData?<BlogEdit/>:<Navigate to={"/login"}/>}/>
+        <Route path='/admin/blogs' element={userData?<BlogManage/>:<Navigate to={"/login"}/>}/> */}
+      
+      
+      <Route path='/admin/blog/create' element={<BlogCreate />} />
+      <Route path='/admin/blog/edit/:id' element={<BlogEdit />} />
+      <Route path='/admin/blogs' element={<BlogManage />} />
+
+
+
         <Route path='/demo-routes' element={<DemoRoutes/>}/>
         <Route path='/test' element={<TestRoute/>}/>
         <Route path='/login' element={<Login/>}/>

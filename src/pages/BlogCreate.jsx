@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import { useSelector } from 'react-redux';
 
-const serverUrl = "https://new-website-backend-2.onrender.com"
-// const serverUrl = "http://localhost:8000"
+// const serverUrl = "https://new-website-backend-2.onrender.com";
+const serverUrl = "https://new-website-backend-2.onrender.com";
 
 const BlogCreate = () => {
   const navigate = useNavigate();
-  const { userData } = useSelector(state => state.user);
-  
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -18,25 +16,18 @@ const BlogCreate = () => {
     metaTitle: '',
     metaDescription: '',
     author: 'Timeless Aesthetics',
-    status: 'draft'
+    status: 'draft',
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-
-  // Check if user is authenticated
-  React.useEffect(() => {
-    if (!userData) {
-      navigate('/login');
-    }
-  }, [userData, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -47,61 +38,47 @@ const BlogCreate = () => {
     setSuccess('');
 
     try {
-      const token = localStorage.getItem('token');
       const response = await fetch(`${serverUrl}/api/blogs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (data.success) {
         setSuccess('Blog created successfully!');
-        setTimeout(() => {
-          navigate('/blogs');
-        }, 2000);
+        setTimeout(() => navigate('/admin/blogs'), 1500);
       } else {
         setError(data.message || 'Failed to create blog');
       }
-    } catch (error) {
+    } catch (err) {
       setError('Server connection error. Please try again.');
-      console.error('Error creating blog:', error);
+      console.error('Error creating blog:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  if (!userData) {
-    return (
-      <div className='w-[100%] overflow-hidden'>
-        <Nav />
-        <div className='min-h-screen flex justify-center items-center'>
-          <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600'></div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
-    <div className='w-[100%] overflow-hidden'>
+    <div className='w-full overflow-hidden'>
       <Nav />
-      
+
       <div className='min-h-screen bg-gray-50 py-8 px-4'>
         <div className='max-w-4xl mx-auto'>
           <div className='bg-white rounded-lg shadow-md p-6 md:p-8'>
-            <h1 className='text-3xl font-bold text-gray-900 mb-8'>Create New Blog</h1>
-            
+            <h1 className='text-3xl font-bold text-gray-900 mb-8'>
+              Create New Blog
+            </h1>
+
             {error && (
               <div className='mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700'>
                 {error}
               </div>
             )}
-            
+
             {success && (
               <div className='mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700'>
                 {success}
@@ -119,8 +96,7 @@ const BlogCreate = () => {
                   value={formData.title}
                   onChange={handleChange}
                   required
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='Enter blog title'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
               </div>
 
@@ -133,8 +109,7 @@ const BlogCreate = () => {
                   name='thumbnail'
                   value={formData.thumbnail}
                   onChange={handleChange}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='https://example.com/image.jpg'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
               </div>
 
@@ -147,8 +122,7 @@ const BlogCreate = () => {
                   name='metaTitle'
                   value={formData.metaTitle}
                   onChange={handleChange}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='SEO title (optional)'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
               </div>
 
@@ -161,8 +135,7 @@ const BlogCreate = () => {
                   value={formData.metaDescription}
                   onChange={handleChange}
                   rows={3}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='SEO description (optional)'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
               </div>
 
@@ -175,8 +148,7 @@ const BlogCreate = () => {
                   name='author'
                   value={formData.author}
                   onChange={handleChange}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='Author name'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
               </div>
 
@@ -190,12 +162,8 @@ const BlogCreate = () => {
                   onChange={handleChange}
                   required
                   rows={15}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  placeholder='Write your blog content here (HTML supported)'
+                  className='w-full px-4 py-2 border rounded-lg'
                 />
-                <p className='mt-2 text-sm text-gray-500'>
-                  You can use HTML tags for formatting (e.g., &lt;p&gt;, &lt;h1&gt;, &lt;strong&gt;, etc.)
-                </p>
               </div>
 
               <div>
@@ -206,7 +174,7 @@ const BlogCreate = () => {
                   name='status'
                   value={formData.status}
                   onChange={handleChange}
-                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                  className='w-full px-4 py-2 border rounded-lg'
                 >
                   <option value='draft'>Draft</option>
                   <option value='published'>Published</option>
@@ -217,15 +185,15 @@ const BlogCreate = () => {
                 <button
                   type='submit'
                   disabled={loading}
-                  className='flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+                  className='flex-1 bg-blue-600 text-white py-3 rounded-lg disabled:opacity-50'
                 >
                   {loading ? 'Creating...' : 'Create Blog'}
                 </button>
-                
+
                 <button
                   type='button'
-                  onClick={() => navigate('/blogs')}
-                  className='flex-1 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors'
+                  onClick={() => navigate('/admin/blogs')}
+                  className='flex-1 bg-gray-200 py-3 rounded-lg'
                 >
                   Cancel
                 </button>
@@ -234,7 +202,7 @@ const BlogCreate = () => {
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );
