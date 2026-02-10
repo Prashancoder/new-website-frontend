@@ -45,6 +45,9 @@ import getAllReviews from './customHooks/getAllReviews'
 import Blog from './pages/Blog'
 import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
+import BlogCreate from './pages/BlogCreate'
+import BlogEdit from './pages/BlogEdit'
+import BlogManage from './pages/BlogManage'
 import CoursePage from './pages/CoursePage'
 import CourseIndex from './pages/CourseIndex'
 import CoursePurchase from './pages/CoursePurchase'
@@ -91,6 +94,9 @@ function App() {
         <Route path='/blog' element={<Blog/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/blogs/:slug' element={<BlogDetail/>}/>
+        <Route path='/admin/blog/create' element={userData?<BlogCreate/>:<Navigate to={"/login"}/>}/>
+        <Route path='/admin/blog/edit/:id' element={userData?<BlogEdit/>:<Navigate to={"/login"}/>}/>
+        <Route path='/admin/blogs' element={userData?<BlogManage/>:<Navigate to={"/login"}/>}/>
         <Route path='/demo-routes' element={<DemoRoutes/>}/>
         <Route path='/test' element={<TestRoute/>}/>
         <Route path='/login' element={<Login/>}/>

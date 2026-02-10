@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
+const serverUrl = "https://new-website-backend-2.onrender.com"
+// const serverUrl = "http://localhost:8000"
+
 const BlogDetail = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
@@ -19,7 +22,7 @@ const BlogDetail = () => {
   const fetchBlog = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://new-website-backend-2.onrender.com/api/blogs/slug/${slug}`);
+      const response = await fetch(`${serverUrl}/api/blogs/slug/${slug}`);
       const data = await response.json();
       
       if (data.success) {

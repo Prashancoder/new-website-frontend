@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
+const serverUrl = "https://new-website-backend-2.onrender.com"
+// const serverUrl = "http://localhost:8000"
+
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,7 +23,7 @@ const Blogs = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://new-website-backend-2.onrender.com/api/blogs?page=${page}&limit=6`);
+      const response = await fetch(`${serverUrl}/api/blogs?page=${page}&limit=6`);
       const data = await response.json();
       
       if (data.success) {
