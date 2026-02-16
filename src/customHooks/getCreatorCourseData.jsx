@@ -15,7 +15,7 @@ const getCreatorCourseData = () => {
         const result = await axios.get(serverUrl + "/api/course/getcreatorcourses" , {withCredentials:true})
         
          await dispatch(setCreatorCourseData(result.data))
-
+        
         
         console.log(result.data)
         

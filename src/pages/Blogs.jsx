@@ -26,6 +26,11 @@ const Blogs = () => {
     try {
       setLoading(true);
       const response = await fetch(`${serverUrl}/api/blogs?page=${page}&limit=6`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.success) {
@@ -35,8 +40,12 @@ const Blogs = () => {
         setError('Unable to load blogs at the moment.');
       }
     } catch (error) {
-      setError('Server connection error.');
-      console.error('Error:', error);
+      console.error('Fetch error:', error);
+      if (error.message.includes('Unexpected token')) {
+        setError('Server returned invalid response. Please check if backend is deployed correctly.');
+      } else {
+        setError('Server connection error.');
+      }
     } finally {
       setLoading(false);
     }

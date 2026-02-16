@@ -3,16 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-// const serverUrl = "https://new-website-backend-2.onrender.com"
-const serverUrl = "https://new-website-backend-2.onrender.com"
+const serverUrl = "https://new-website-backend-2.onrender.com";
 
 const BlogDetail = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const THEME_COLOR = "#D4AF37"; // Gold Theme
 
   useEffect(() => {
     fetchBlog();
@@ -24,7 +21,6 @@ const BlogDetail = () => {
       setLoading(true);
       const response = await fetch(`${serverUrl}/api/blogs/slug/${slug}`);
       const data = await response.json();
-      
       if (data.success) {
         setBlog(data.data);
         document.title = `${data.data.title} | Timeless Aesthetics`;
@@ -38,91 +34,107 @@ const BlogDetail = () => {
     }
   };
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  };
-
   if (loading) {
     return (
-      <div className='w-full'>
-        <Nav />
-        <div className='min-h-screen flex flex-col justify-center items-center bg-white'>
-          <div className='w-12 h-12 border-4 border-gray-100 border-t-[#D4AF37] rounded-full animate-spin'></div>
-          <p className='mt-4 text-xs font-bold uppercase tracking-widest text-gray-400'>Loading Story</p>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (error || !blog) {
-    return (
-      <div className='w-full'>
-        <Nav />
-        <div className='min-h-[70vh] flex flex-col justify-center items-center px-4'>
-          <h1 className='text-6xl font-serif text-gray-200 mb-4'>404</h1>
-          <p className='text-gray-500 mb-8'>{error || 'Content missing'}</p>
-          <Link to='/blogs' className='px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37] transition-all'>
-            Explore Other Blogs
-          </Link>
-        </div>
-        <Footer />
+      <div className='min-h-screen flex justify-center items-center bg-white'>
+        <div className='w-10 h-10 border-2 border-gray-200 border-t-[#D4AF37] rounded-full animate-spin'></div>
       </div>
     );
   }
 
   return (
-    <div className='w-full bg-white'>
+    <div className='w-full bg-[#FCFAFA] selection:bg-[#D4AF37]/10'>
       <Nav />
       
-      <article className='pt-24 pb-20'>
-        {/* Header Section */}
-        <header className='max-w-4xl mx-auto px-4 text-center mb-12'>
-          <div className='flex items-center justify-center space-x-3 mb-6'>
-            <span className='h-[1px] w-8 bg-[#D4AF37]'></span>
+      <article className='pt-28 pb-24'>
+        {/* Compact Header Area */}
+        <header className='max-w-3xl mx-auto px-6 mb-12 text-center'>
+          <div className='mb-6 flex items-center justify-center gap-4'>
             <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]'>
-              {blog.author} • {formatDate(blog.createdAt)}
+              Clinical Journal
             </span>
-            <span className='h-[1px] w-8 bg-[#D4AF37]'></span>
+            <span className='w-1 h-1 bg-gray-300 rounded-full'></span>
+            <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400'>
+              {new Date(blog.createdAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
+            </span>
           </div>
           
-          <h1 className='text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-8 leading-[1.15]'>
+          <h1 className='text-3xl md:text-5xl font-serif font-semibold text-gray-900 leading-snug mb-6'>
             {blog.title}
           </h1>
-
-          {blog.metaDescription && (
-            <p className='text-lg md:text-xl text-gray-500 font-light italic leading-relaxed max-w-3xl mx-auto'>
-              "{blog.metaDescription}"
-            </p>
-          )}
+          
+          <div className='h-[2px] w-12 bg-[#D4AF37] mx-auto'></div>
         </header>
 
-        {/* Feature Image */}
+        {/* Scaled-down Feature Image */}
         {blog.thumbnail && (
-          <div className='max-w-6xl mx-auto px-4 mb-16'>
-            <div className='aspect-video overflow-hidden rounded-sm shadow-2xl'>
+          <div className='max-w-4xl mx-auto px-6 mb-16'>
+            <div className='relative overflow-hidden rounded-lg shadow-lg group'>
               <img 
                 src={blog.thumbnail} 
                 alt={blog.title}
-                className='w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000'
+                className='w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105'
               />
+              <div className='absolute inset-0 ring-1 ring-inset ring-black/5 rounded-lg'></div>
             </div>
           </div>
         )}
 
-        {/* Article Body */}
-        <div className='max-w-3xl mx-auto px-6'>
+        {/* Content Section with Proper Typography */}
+        <div className='max-w-2xl mx-auto px-6'>
           <style>{`
-            .blog-content h2 { font-size: 2rem; font-weight: 700; color: #111; margin-top: 2.5rem; margin-bottom: 1.2rem; font-family: serif; border-left: 4px solid #D4AF37; padding-left: 1rem; }
-            .blog-content h3 { font-size: 1.5rem; font-weight: 600; color: #333; margin-top: 2rem; margin-bottom: 1rem; }
-            .blog-content p { font-size: 1.125rem; line-height: 1.9; color: #4b5563; margin-bottom: 1.5rem; font-weight: 300; }
-            .blog-content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc; color: #D4AF37; }
-            .blog-content ul li { color: #4b5563; margin-bottom: 0.5rem; }
-            .blog-content strong { color: #111; font-weight: 600; }
+            .blog-content {
+              font-family: 'Inter', sans-serif;
+              color: #374151;
+            }
+            .blog-content h2 { 
+              font-family: serif; 
+              font-size: 1.85rem; 
+              color: #111; 
+              margin-top: 3rem; 
+              margin-bottom: 1rem; 
+              font-weight: 600;
+              line-height: 1.3;
+            }
+            .blog-content p { 
+              font-size: 1.1rem; 
+              line-height: 1.8; 
+              margin-bottom: 1.5rem; 
+              font-weight: 400;
+              color: #4B5563;
+              letter-spacing: -0.01em;
+            }
+            .blog-content strong {
+              color: #111;
+              font-weight: 600;
+            }
+            /* Style for the first paragraph to look editorial */
+            .blog-content p:first-of-type {
+              font-size: 1.25rem;
+              color: #1F2937;
+              line-height: 1.7;
+            }
+            .blog-content ul {
+              margin: 1.5rem 0;
+              padding-left: 1.25rem;
+              list-style: none;
+            }
+            .blog-content li {
+              position: relative;
+              padding-left: 1.5rem;
+              margin-bottom: 0.75rem;
+              font-size: 1.05rem;
+            }
+            .blog-content li::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 10px;
+              width: 6px;
+              height: 6px;
+              background-color: #D4AF37;
+              border-radius: 50%;
+            }
           `}</style>
 
           <div 
@@ -130,31 +142,29 @@ const BlogDetail = () => {
             className='blog-content'
           />
 
-          {/* Share / Footer */}
-          <div className='mt-20 pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0'>
-            <div className='flex items-center space-x-4'>
-               <div className='w-12 h-12 bg-gray-900 flex items-center justify-center text-[#D4AF37] font-serif text-xl rounded-full'>
-                 {blog.author.charAt(0)}
-               </div>
-               <div>
-                 <p className='text-[10px] uppercase tracking-widest text-gray-400 font-bold'>Written by</p>
-                 <p className='text-sm font-bold text-gray-900'>{blog.author}</p>
-               </div>
+          {/* Minimalist Author Footer */}
+          <footer className='mt-20 pt-8 border-t border-gray-100 flex items-center justify-between'>
+            <div className='flex items-center gap-4'>
+              <div className='w-10 h-10 bg-black text-[#D4AF37] flex items-center justify-center rounded-full font-serif text-lg'>
+                {blog.author.charAt(0)}
+              </div>
+              <div className='flex flex-col'>
+                <span className='text-[9px] uppercase tracking-widest text-gray-400 font-bold'>Published By</span>
+                <span className='text-sm font-semibold text-gray-900'>{blog.author}</span>
+              </div>
             </div>
 
             <Link 
-              to='/blogs'
-              className='flex items-center text-[10px] font-bold uppercase tracking-widest text-gray-900 border-b-2 border-[#D4AF37] pb-1 hover:opacity-60 transition-all'
+              to='/blogs' 
+              className='text-[10px] font-bold uppercase tracking-widest text-gray-900 flex items-center gap-2 group'
             >
-              <svg className='w-4 h-4 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 19l-7-7m0 0l7-7m-7 7h18' />
-              </svg>
-              All Articles
+              <span className='w-6 h-[1px] bg-[#D4AF37] group-hover:w-10 transition-all'></span>
+              All Stories
             </Link>
-          </div>
+          </footer>
         </div>
       </article>
-      
+
       <Footer />
     </div>
   );
