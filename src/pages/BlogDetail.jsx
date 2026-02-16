@@ -8,6 +8,7 @@ const serverUrl = "https://new-website-backend-2.onrender.com";
 const BlogDetail = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
+  const [otherBlogs, setOtherBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -19,14 +20,27 @@ const BlogDetail = () => {
   const fetchBlog = async () => {
     try {
       setLoading(true);
+
+      // Fetch Main Blog
       const response = await fetch(`${serverUrl}/api/blogs/slug/${slug}`);
       const data = await response.json();
+
       if (data.success) {
         setBlog(data.data);
         document.title = `${data.data.title} | Timeless Aesthetics`;
       } else {
         setError('Blog post not found');
       }
+
+      // Fetch Other Blogs for Sidebar
+      const response2 = await fetch(`${serverUrl}/api/blogs?page=1&limit=6`);
+      const data2 = await response2.json();
+
+      if (data2.success) {
+        const filtered = data2.data.filter(b => b.slug !== slug);
+        setOtherBlogs(filtered.slice(0, 4));
+      }
+
     } catch (error) {
       setError('Connection failed. Please try again.');
     } finally {
@@ -42,12 +56,21 @@ const BlogDetail = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className='min-h-screen flex justify-center items-center'>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className='w-full bg-[#FCFAFA] selection:bg-[#D4AF37]/10'>
       <Nav />
-      
+
       <article className='pt-28 pb-24'>
-        {/* Compact Header Area */}
+
+        {/* Header */}
         <header className='max-w-3xl mx-auto px-6 mb-12 text-center'>
           <div className='mb-6 flex items-center justify-center gap-4'>
             <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]'>
@@ -55,113 +78,107 @@ const BlogDetail = () => {
             </span>
             <span className='w-1 h-1 bg-gray-300 rounded-full'></span>
             <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400'>
-              {new Date(blog.createdAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
+              {new Date(blog.createdAt).toLocaleDateString('en-GB', {
+                month: 'short',
+                year: 'numeric'
+              })}
             </span>
           </div>
-          
+
           <h1 className='text-3xl md:text-5xl font-serif font-semibold text-gray-900 leading-snug mb-6'>
             {blog.title}
           </h1>
-          
+
           <div className='h-[2px] w-12 bg-[#D4AF37] mx-auto'></div>
         </header>
 
-        {/* Scaled-down Feature Image */}
+        {/* Feature Image */}
         {blog.thumbnail && (
           <div className='max-w-4xl mx-auto px-6 mb-16'>
-            <div className='relative overflow-hidden rounded-lg shadow-lg group'>
-              <img 
-                src={blog.thumbnail} 
-                alt={blog.title}
-                className='w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105'
-              />
-              <div className='absolute inset-0 ring-1 ring-inset ring-black/5 rounded-lg'></div>
-            </div>
+            <img
+              src={blog.thumbnail}
+              alt={blog.title}
+              className='w-full h-[400px] object-cover rounded-lg shadow-lg'
+            />
           </div>
         )}
 
-        {/* Content Section with Proper Typography */}
-        <div className='max-w-2xl mx-auto px-6'>
-          <style>{`
-            .blog-content {
-              font-family: 'Inter', sans-serif;
-              color: #374151;
-            }
-            .blog-content h2 { 
-              font-family: serif; 
-              font-size: 1.85rem; 
-              color: #111; 
-              margin-top: 3rem; 
-              margin-bottom: 1rem; 
-              font-weight: 600;
-              line-height: 1.3;
-            }
-            .blog-content p { 
-              font-size: 1.1rem; 
-              line-height: 1.8; 
-              margin-bottom: 1.5rem; 
-              font-weight: 400;
-              color: #4B5563;
-              letter-spacing: -0.01em;
-            }
-            .blog-content strong {
-              color: #111;
-              font-weight: 600;
-            }
-            /* Style for the first paragraph to look editorial */
-            .blog-content p:first-of-type {
-              font-size: 1.25rem;
-              color: #1F2937;
-              line-height: 1.7;
-            }
-            .blog-content ul {
-              margin: 1.5rem 0;
-              padding-left: 1.25rem;
-              list-style: none;
-            }
-            .blog-content li {
-              position: relative;
-              padding-left: 1.5rem;
-              margin-bottom: 0.75rem;
-              font-size: 1.05rem;
-            }
-            .blog-content li::before {
-              content: "";
-              position: absolute;
-              left: 0;
-              top: 10px;
-              width: 6px;
-              height: 6px;
-              background-color: #D4AF37;
-              border-radius: 50%;
-            }
-          `}</style>
+        {/* ===== CONTENT + SIDEBAR GRID ===== */}
+        <div className='max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12'>
 
-          <div 
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-            className='blog-content'
-          />
+          {/* LEFT SIDE - MAIN BLOG */}
+          <div className='lg:col-span-2'>
 
-          {/* Minimalist Author Footer */}
-          <footer className='mt-20 pt-8 border-t border-gray-100 flex items-center justify-between'>
-            <div className='flex items-center gap-4'>
-              <div className='w-10 h-10 bg-black text-[#D4AF37] flex items-center justify-center rounded-full font-serif text-lg'>
-                {blog.author.charAt(0)}
+            <div
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+              className='prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-gray-900 prose-p:text-gray-600 prose-strong:text-gray-900 prose-li:marker:text-[#D4AF37]'
+            />
+
+            {/* Author Section */}
+            <footer className='mt-20 pt-8 border-t border-gray-100 flex items-center justify-between'>
+              <div className='flex items-center gap-4'>
+                <div className='w-10 h-10 bg-black text-[#D4AF37] flex items-center justify-center rounded-full font-serif text-lg'>
+                  {blog.author?.charAt(0)}
+                </div>
+                <div className='flex flex-col'>
+                  <span className='text-[9px] uppercase tracking-widest text-gray-400 font-bold'>
+                    Published By
+                  </span>
+                  <span className='text-sm font-semibold text-gray-900'>
+                    {blog.author}
+                  </span>
+                </div>
               </div>
-              <div className='flex flex-col'>
-                <span className='text-[9px] uppercase tracking-widest text-gray-400 font-bold'>Published By</span>
-                <span className='text-sm font-semibold text-gray-900'>{blog.author}</span>
-              </div>
+
+              <Link
+                to='/blogs'
+                className='text-[10px] font-bold uppercase tracking-widest text-gray-900 flex items-center gap-2 group'
+              >
+                <span className='w-6 h-[1px] bg-[#D4AF37] group-hover:w-10 transition-all'></span>
+                All Stories
+              </Link>
+            </footer>
+          </div>
+
+          {/* RIGHT SIDE - SIDEBAR */}
+          <div className='lg:col-span-1'>
+            <div className='sticky top-28'>
+
+              <h3 className='text-xs uppercase tracking-widest text-gray-400 mb-6'>
+                More Articles
+              </h3>
+
+              {otherBlogs.map((item) => (
+                <Link
+                  key={item._id}
+                  to={`/blogs/${item.slug}`}
+                  className='flex gap-4 mb-6 group'
+                >
+                  <img
+                    src={item.thumbnail || 'https://via.placeholder.com/150'}
+                    alt={item.title}
+                    className='w-20 h-20 object-cover rounded-md'
+                  />
+
+                  <div>
+                    <p className='text-[10px] text-gray-400 mb-1'>
+                      {new Date(item.createdAt).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                      })}
+                    </p>
+
+                    <h4 className='text-sm font-semibold text-gray-800 group-hover:text-[#D4AF37] transition'>
+                      {item.title}
+                    </h4>
+                  </div>
+                </Link>
+              ))}
+
             </div>
+          </div>
 
-            <Link 
-              to='/blogs' 
-              className='text-[10px] font-bold uppercase tracking-widest text-gray-900 flex items-center gap-2 group'
-            >
-              <span className='w-6 h-[1px] bg-[#D4AF37] group-hover:w-10 transition-all'></span>
-              All Stories
-            </Link>
-          </footer>
         </div>
       </article>
 
