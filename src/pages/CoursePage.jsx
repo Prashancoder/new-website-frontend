@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet-async";
 
 import {
   BookOpen,
@@ -75,7 +74,7 @@ const courseDataMap = {
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
-        courseDetailImage: "/courses2/Masters in PMU.png",
+        courseDetailImage: "/courses2/MastersinPMU.png",
     },
 
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -1507,125 +1506,181 @@ image: "/images/dr.png", // replace with actual image
   ,
   };
 
-  const CoursePage = () => {
+
+const CoursePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const auth = typeof useAuth === "function" ? useAuth() : null;
-  const user = auth ? auth.user : null;
-
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const pathSegments = location.pathname.split("/").filter(Boolean);
-    const coursePath = pathSegments.slice(1).join("/");
-    const course = courseDataMap[coursePath] || null;
-    setCourseData(course);
+    const rawPath = decodeURIComponent(location.pathname);
+    let coursePath = rawPath.replace(/^\/+|\/+$/g, "");
+
+    if (coursePath.startsWith("courses/")) {
+      coursePath = coursePath.replace("courses/", "");
+    }
+
+    const course = courseDataMap[coursePath];
+
+    if (course) {
+      setCourseData(course);
+      document.title = course.seoTitle || course.title;
+    } else {
+      setCourseData(null);
+    }
+
     setLoading(false);
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F6]">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-[#D4AF37] mx-auto"></div>
-          <p className="mt-6 text-[#555] text-lg font-lato">Loading...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        Loading...
       </div>
     );
   }
 
-  if (!courseData)
-    return <div className="text-center py-20">Course Not Found</div>;
+  if (!courseData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Course Not Found
+      </div>
+    );
+  }
 
   return (
-    <>
-      {/* ✅ SEO Helmet Added Here */}
-      <Helmet>
-        <title>
-          {courseData.seoTitle || courseData.title}
-        </title>
+    <div className="bg-[#F4F1EC] min-h-screen">
+      <Nav />
 
-        <meta
-          name="description"
-          content={
-            courseData.seoDescription || courseData.description
-          }
-        />
+      {/* ================= HERO WITH BACKGROUND IMAGE ================= */}
+      <section
+        className="relative h-[420px] flex items-center justify-center text-white"
+        style={{
+          backgroundImage: `url(${courseData.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        <meta
-          name="keywords"
-          content={courseData.metaKeywords || ""}
-        />
+        <div className="relative text-center">
+          <p className="uppercase text-sm tracking-widest text-[#D4AF37] mb-4">
+            {courseData.category}
+          </p>
 
-        <link
-          rel="canonical"
-          href={`https://www.timelessaestheticss.com${location.pathname}`}
-        />
-      </Helmet>
+          <h1 className="text-4xl md:text-5xl font-bold">
+            {courseData.title}
+          </h1>
 
-      <div className="min-h-screen bg-[#FAF8F6] flex flex-col font-lato">
-        <Nav />
-
-        {/* --- MOBILE VIEW --- */}
-        <div className="block md:hidden pt-[70px] bg-white">
-          {courseData.instructor?.courseDetailImage && (
-            <div className="w-full">
-              <img
-                src={courseData.instructor.courseDetailImage}
-                alt="Course Syllabus"
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          )}
-
-          <div className="p-5 border-b-4 border-[#D4AF37]">
-            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.2em]">
-              {courseData.category}
+          <div className="flex justify-center gap-6 mt-6 text-sm">
+            <span className="flex items-center gap-2">
+              <Clock size={16} /> {courseData.duration}
             </span>
-
-            <h1 className="text-2xl font-bold text-[#3B2F2F] font-playfair uppercase mt-1 leading-tight">
-              {courseData.title}
-            </h1>
+            <span className="flex items-center gap-2">
+              <Star size={16} /> {courseData.level}
+            </span>
+            <span className="flex items-center gap-2">
+              <Users size={16} /> Small Batch
+            </span>
           </div>
         </div>
+      </section>
 
-        {/* --- DESKTOP HERO --- */}
-        <div
-          className="hidden md:block relative text-white py-24 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${courseData.image})`,
-          }}
-        >
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-block mb-6 text-sm px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white/90">
-                {courseData.category}
-              </span>
+      {/* ================= MAIN SECTION ================= */}
+      <section className="container mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-3 gap-10">
 
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 font-playfair uppercase tracking-wide">
-                {courseData.title}
-              </h1>
+          {/* LEFT COLUMN */}
+          <div className="lg:col-span-2 space-y-8">
 
-              <div className="flex flex-wrap justify-center gap-6 text-lg mt-8 text-white/90">
-                <span>{courseData.duration}</span>
-                <span>{courseData.level}</span>
-                <span>Small Batch</span>
+            {/* Instructor Card */}
+            <div className="bg-white p-6 rounded-2xl shadow-md border">
+              <div className="flex items-center gap-4">
+                <img
+                  src={courseData.instructor?.image}
+                  className="w-16 h-16 rounded-full object-cover"
+                  alt=""
+                />
+                <div>
+                  <h3 className="font-semibold">
+                    {courseData.instructor?.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {courseData.instructor?.experience}
+                  </p>
+                </div>
               </div>
-            </motion.div>
+            </div>
+
+            {/* Course Overview */}
+            <div className="bg-white p-6 rounded-2xl shadow-md border">
+              <h3 className="font-semibold mb-4">Course Overview</h3>
+              <p className="text-gray-600 leading-relaxed">
+                {courseData.description}
+              </p>
+            </div>
+
+            {/* Student Review (Static Demo) */}
+            <div className="bg-white p-6 rounded-2xl shadow-md border">
+              <h3 className="font-semibold mb-4">Student Reviews</h3>
+              <p className="font-medium">Priya Sharma</p>
+              <p className="text-yellow-500">★★★★★</p>
+              <p className="text-gray-600 text-sm">
+                Amazing course! Detailed training and hands-on practice.
+              </p>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="space-y-8">
+
+            {/* Course Poster Image */}
+            <div className="bg-white rounded-2xl shadow-lg p-4">
+<img
+  src={
+    courseData.courseDetailImage ||
+    courseData.instructor?.courseDetailImage ||
+    courseData.image
+  }
+  alt="Course Detail"
+  className="rounded-xl w-full object-cover"
+/>
+
+            </div>
+
+            {/* Enrollment Card */}
+            <div className="bg-white p-6 rounded-2xl shadow-md border">
+              <h3 className="font-semibold mb-4">Enrollment Details</h3>
+
+              <div className="flex justify-between mb-3">
+                <span>Duration:</span>
+                <span>{courseData.duration}</span>
+              </div>
+
+              <div className="flex justify-between mb-3">
+                <span>Level:</span>
+                <span>{courseData.level}</span>
+              </div>
+
+              <div className="flex justify-between mb-6 font-bold text-lg text-[#C8A43F]">
+                <span>Fee:</span>
+                <span>{courseData.price}</span>
+              </div>
+
+              <button className="w-full bg-[#C8A43F] text-white py-3 rounded-lg hover:bg-[#b8932f] transition">
+                Enroll Now
+              </button>
+            </div>
+
           </div>
         </div>
+      </section>
 
-        {/* Rest of your content same as before */}
-        
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 
