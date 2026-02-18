@@ -83,66 +83,6 @@ const courseDataMap = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           "permanent-makeup/master-scalp": {
             title: "Master class in Scalp Micropigmentation",
             courseDetailImage: "/courses2/1.jpeg", // New Image Path
@@ -252,7 +192,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
 
 
 
-"permanent-makeup/Medical-micropigmentation": {
+   "permanent-makeup/Medical-micropigmentation": {
     title: "Medical Micropigmentation",
     description: "A specialized clinical course focusing on paramedical tattooing. This masterclass covers advanced procedures like Areola restoration, Vitiligo camouflage, Scar revision, and Scalp Micropigmentation (SMP) to help patients regain confidence after medical treatments or trauma.",
     duration: "7 Days",
@@ -1566,8 +1506,6 @@ image: "/images/dr.png", // replace with actual image
   
   ,
   };
-
-
 
   const CoursePage = () => {
   const location = useLocation();

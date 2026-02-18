@@ -6,36 +6,6 @@ import Nav from "../components/Nav"; // Changed from Header
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 
-// Note: In JSX, the data structure is implicitly defined.
-// The data structure used in the component is:
-/*
-{
-  title: string;
-  description: string;
-  duration: string;
-  category: string;
-  subcategory: string;
-  price: string;
-  features: string[];
-  benefits: string[];
-  process: string[];
-  aftercare: string[];
-  contraindications: string[];
-  image?: string;
-  relatedServices: {
-    name: string;
-    link: string;
-    description: string;
-  }[];
-  videoUrl?: string;
-  instructor?: {
-    name: string;
-    bio: string;
-    experience: string;
-    image?: string;
-  };
-}
-*/
 
 const IndividualServicePage = () => {
   const location = useLocation();
