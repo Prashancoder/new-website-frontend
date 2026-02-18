@@ -869,124 +869,216 @@ image: "/images/dr.png", // replace with actual image
 
 
           
-          "facial-aesthetics/masters": {
-            title: "Masters in Facial Aesthetics",
-            description: "Comprehensive master's program in facial aesthetics covering all aspects of non-surgical facial treatments including injectables, threads, and advanced techniques.",
-            duration: "6 Months",
-            level: "Master's",
-            category: "Facial Aesthetics",
-            price: "₹2,50,000",
-            image: "/images/goo.jpg",
-            features: [
-              "Complete facial aesthetics training",
-              "Advanced injection techniques",
-              "Thread lift procedures",
-              "Business management",
-              "Clinical experience",
-              "Mentorship program"
-            ],
-            curriculum: [
-              "Facial anatomy and aging",
-              "Injectable treatments (Botox, Fillers)",
-              "Thread lift techniques",
-              "Advanced procedures",
-              "Client consultation and assessment",
-              "Business management and marketing",
-              "Clinical practice and supervision"
-            ],
-            requirements: [
-              "Medical degree or equivalent",
-              "Valid medical license",
-              "Previous aesthetic experience preferred",
-              "Portfolio review"
-            ],
-            certification: "Master's Degree in Facial Aesthetics",
-            instructor: {
-              name: "Dr. Aesthetic Kumar",
-              bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
-              experience: "Trained 500+ professionals globally",
-image: "/images/dr.png", // replace with actual image
-              },
-              videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          },
-          "facial-aesthetics/master-lipolytic": {
-            title: "Master Class In Lipolytic Injections",
-            description: "Advanced training in lipolytic injection techniques for fat reduction and body contouring. Learn safe and effective methods for non-surgical fat reduction.",
-            duration: "3 Days",
-            level: "Advanced",
-            category: "Facial Aesthetics",
-            price: "₹60,000",
-            image: "/images/goo.jpg",
-            features: [
-              "Advanced lipolytic techniques",
-              "Anatomy and safety protocols",
-              "Treatment planning",
-              "Client consultation",
-              "Complication management",
-              "Business development"
-            ],
-            curriculum: [
-              "Fat anatomy and physiology",
-              "Lipolytic agents and mechanisms",
-              "Injection techniques and protocols",
-              "Treatment planning and assessment",
-              "Safety protocols and complications",
-              "Client consultation and consent"
-            ],
-            requirements: [
-              "Medical degree required",
-              "Valid medical license",
-              "Previous injection experience",
-              "Portfolio review"
-            ],
-            certification: "Master Certificate in Lipolytic Injections",
-            instructor: {
-              name: "Dr. Aesthetic Kumar",
-              bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
-              experience: "Trained 500+ professionals globally",
-image: "/images/dr.png", // replace with actual image
-              },
-              videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          },
-          "facial-aesthetics/master-nose": {
-            title: "Master Class in Nose correction",
-            description: "Specialized training in non-surgical nose correction using advanced filler techniques. Learn to reshape and enhance nose appearance without surgery.",
-            duration: "2 Days",
-            level: "Advanced",
-            category: "Facial Aesthetics",
-            price: "₹45,000",
-            image: "/images/goo.jpg",
-            features: [
-              "Non-surgical nose correction",
-              "Advanced filler techniques",
-              "Anatomy and safety",
-              "Treatment planning",
-              "Client consultation",
-              "Complication management"
-            ],
-            curriculum: [
-              "Nose anatomy and structure",
-              "Filler selection and techniques",
-              "Treatment planning and assessment",
-              "Injection protocols",
-              "Safety and complications",
-              "Client consultation and consent"
-            ],
-            requirements: [
-              "Medical degree required",
-              "Valid medical license",
-              "Previous filler experience",
-              "Portfolio review"
-            ],
-            certification: "Master Certificate in Nose Correction",
-            instructor: {
-              name: "Dr. Aesthetic Kumar",
-              bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
-              experience: "Trained 500+ professionals globally",
-image: "/images/dr.png", // replace with actual image
-              },
-              videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          },
+
+        "facial-aesthetics/masters": {
+  title: "Masters in Facial Aesthetics",
+
+  description:
+    "Comprehensive master's program in facial aesthetics covering all aspects of non-surgical facial treatments including injectables, threads, and advanced techniques.",
+
+  // ✅ SEO FIELDS ADDED
+  seoTitle:
+    "Masters in Facial Aesthetics Course in Amritsar | Timeless Aesthetics",
+
+  seoDescription:
+    "Advance your career with a Masters in Facial Aesthetics in Amritsar. Learn Botox, dermal fillers, thread lifts, and non-surgical skin treatments to deliver safe and natural results.",
+
+  metaKeywords:
+    "Masters in Facial Aesthetics Amritsar, Botox training Amritsar, filler course Amritsar, non surgical facial course, aesthetic medicine training Punjab, dermal filler training Amritsar",
+
+  slug: "masters-in-facial-aesthetics",
+
+  duration: "6 Months",
+  level: "Master's",
+  category: "Facial Aesthetics",
+  price: "₹2,50,000",
+
+  image: "/images/goo.jpg",
+
+  // Optional: add this for right-side poster
+  courseDetailImage: "/courses2/masters-facial-aesthetics.png",
+
+  features: [
+    "Complete facial aesthetics training",
+    "Advanced injection techniques",
+    "Thread lift procedures",
+    "Business management",
+    "Clinical experience",
+    "Mentorship program",
+  ],
+
+  curriculum: [
+    "Facial anatomy and aging",
+    "Injectable treatments (Botox, Fillers)",
+    "Thread lift techniques",
+    "Advanced procedures",
+    "Client consultation and assessment",
+    "Business management and marketing",
+    "Clinical practice and supervision",
+  ],
+
+  requirements: [
+    "Medical degree or equivalent",
+    "Valid medical license",
+    "Previous aesthetic experience preferred",
+    "Portfolio review",
+  ],
+
+  certification: "Master's Degree in Facial Aesthetics",
+
+  instructor: {
+    name: "Dr. Aesthetic Kumar",
+    bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
+    experience: "Trained 500+ professionals globally",
+    image: "/images/dr.png",
+  },
+
+  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+},
+
+
+
+
+
+
+          
+"facial-aesthetics/master-lipolytic": {
+  title: "Master Class in Lipolytic Injections",
+
+  description:
+    "Join a Master Class in Lipolytic Injections and learn safe fat-dissolving techniques for body contouring and non-surgical aesthetic treatments. Gain hands-on training in advanced injectable protocols with expert supervision.",
+
+  // ✅ SEO FIELDS ADDED
+  seoTitle:
+    "Master Class in Lipolytic Injections | Fat Dissolving Injection Training",
+
+  seoDescription:
+    "Join a Master Class in Lipolytic Injections and learn safe fat-dissolving techniques for body contouring and non-surgical aesthetic treatments.",
+
+  metaKeywords:
+    "lipolytic injections course, fat dissolving injections training, body contouring course, aesthetic medicine training, non surgical fat reduction, mesotherapy fat reduction, cosmetic injectable training, aesthetic practitioner course",
+
+  slug: "master-class-lipolytic-injections",
+
+  duration: "3 Days",
+  level: "Advanced",
+  category: "Facial Aesthetics",
+  price: "₹60,000",
+
+  image: "/images/goo.jpg",
+
+  // Optional: right side poster image
+  courseDetailImage: "/courses2/master-lipolytic.png",
+
+  features: [
+    "Advanced lipolytic techniques",
+    "Anatomy and safety protocols",
+    "Treatment planning",
+    "Client consultation",
+    "Complication management",
+    "Business development"
+  ],
+
+  curriculum: [
+    "Fat anatomy and physiology",
+    "Lipolytic agents and mechanisms",
+    "Injection techniques and protocols",
+    "Treatment planning and assessment",
+    "Safety protocols and complications",
+    "Client consultation and consent"
+  ],
+
+  requirements: [
+    "Medical degree required",
+    "Valid medical license",
+    "Previous injection experience",
+    "Portfolio review"
+  ],
+
+  certification: "Master Certificate in Lipolytic Injections",
+
+  instructor: {
+    name: "Dr. Aesthetic Kumar",
+    bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
+    experience: "Trained 500+ professionals globally",
+    image: "/images/dr.png",
+  },
+
+  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+},
+
+
+
+
+"facial-aesthetics/master-nose": {
+  title: "Master Class in Nose Correction",
+
+  description:
+    "Join a Master Class in Nose Correction and learn non-surgical rhinoplasty techniques using dermal fillers for safe, precise aesthetic results. This advanced training helps you master liquid rhinoplasty with hands-on clinical practice.",
+
+  // ✅ SEO FIELDS ADDED
+  seoTitle:
+    "Master Class in Nose Correction | Non-Surgical Rhinoplasty Training",
+
+  seoDescription:
+    "Join a Master Class in Nose Correction and learn non-surgical rhinoplasty techniques using dermal fillers for safe, precise aesthetic results.",
+
+  metaKeywords:
+    "nose correction course, non surgical rhinoplasty training, liquid rhinoplasty course, dermal fillers nose shaping, aesthetic medicine training, facial contouring course, cosmetic injectable training",
+
+  slug: "master-class-nose-correction",
+
+  duration: "2 Days",
+  level: "Advanced",
+  category: "Facial Aesthetics",
+  price: "₹45,000",
+
+  image: "/images/goo.jpg",
+
+  // Optional right-side poster image
+  courseDetailImage: "/courses2/master-nose-correction.png",
+
+  features: [
+    "Non-surgical nose correction",
+    "Advanced dermal filler techniques",
+    "Detailed nasal anatomy & vascular safety",
+    "Treatment planning and facial harmony analysis",
+    "Client consultation and case selection",
+    "Complication management protocols"
+  ],
+
+  curriculum: [
+    "Nose anatomy and vascular danger zones",
+    "Dermal filler rheology and product selection",
+    "Liquid rhinoplasty injection techniques",
+    "Mapping and reshaping strategies",
+    "Safety and complication management",
+    "Client consultation and informed consent"
+  ],
+
+  requirements: [
+    "Medical degree required",
+    "Valid medical license",
+    "Previous dermal filler experience",
+    "Portfolio review"
+  ],
+
+  certification: "Master Certificate in Non-Surgical Nose Correction",
+
+  instructor: {
+    name: "Dr. Aesthetic Kumar",
+    bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
+    experience: "Trained 500+ professionals globally",
+    image: "/images/dr.png",
+  },
+
+  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+},
+
+
+
+
+
           "facial-aesthetics/master-acne": {
             title: "Master Class In Acne Scar Treatment",
             description: "Advanced training in acne scar treatment using various techniques including lasers, microneedling, and chemical peels for optimal scar reduction.",
