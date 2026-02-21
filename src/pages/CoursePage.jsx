@@ -70,7 +70,7 @@ const courseDataMap = {
     certification: "International Master's Diploma in Permanent Makeup from Timeless Aesthetics Academy",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -117,7 +117,7 @@ const courseDataMap = {
             ],
             certification: "Master Certificate in Scalp Micropigmentation",
             instructor: {
-            name: "Dr. Aesthetic Kumar",
+            name: "Dr. Shikha Baghi",
             bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
             experience: "Trained 500+ professionals globally",
             image: "/images/dr.png", // replace with actual image
@@ -178,7 +178,7 @@ const courseDataMap = {
             ],
             certification: "Post Graduate Diploma in Permanent Makeup",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -227,7 +227,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     ],
     certification: "Master Class Diploma in Medical & Paramedical Micropigmentation",
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Medical Micropigmentation & Restorative Aesthetics.",
         experience: "Trained 500+ professionals globally in clinical PMU",
         image: "/images/dr.png",
@@ -288,7 +288,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Certificate in Brows and Lash Lift",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -347,7 +347,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Certificate in Scalp Micropigmentation",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -408,7 +408,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Certificate in Laser Hair Reduction",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -455,7 +455,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     ],
     certification: "Certificate in Professional Lash Lift, Brow Lamination & Tinting",
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup, Lash & Brow Artistry.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -508,7 +508,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     ],
     certification: "Certificate in Professional Lash Lift, Brow Lamination & Tinting",
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup, Lash & Brow Artistry.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -574,7 +574,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
   certification: "Professional Certificate in Cosmetology",
 
   instructor: {
-      name: "Dr. Aesthetic Kumar",
+      name: "Dr. Shikha Baghi",
       bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
       experience: "Trained 500+ professionals globally",
       image: "/images/dr.png",
@@ -639,7 +639,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Diploma in Cosmetology",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
@@ -699,7 +699,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Professional Certificate in Cosmetology",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png"
@@ -756,7 +756,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Certificate in Medicated HydraFacial",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png"
@@ -813,7 +813,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
     certification: "Certificate in Chemical Peels",
 
     instructor: {
-        name: "Dr. Aesthetic Kumar",
+        name: "Dr. Shikha Baghi",
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png"
@@ -857,7 +857,7 @@ courseDetailImage: "/courses2/PG Diploma in PMU.png",
             ],
             certification: "Master's Degree in Facial Aesthetics",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -927,7 +927,7 @@ image: "/images/dr.png", // replace with actual image
   certification: "Master's Degree in Facial Aesthetics",
 
   instructor: {
-    name: "Dr. Aesthetic Kumar",
+    name: "Dr. Shikha Baghi",
     bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
     experience: "Trained 500+ professionals globally",
     image: "/images/dr.png",
@@ -998,7 +998,7 @@ image: "/images/dr.png", // replace with actual image
   certification: "Master Certificate in Lipolytic Injections",
 
   instructor: {
-    name: "Dr. Aesthetic Kumar",
+    name: "Dr. Shikha Baghi",
     bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
     experience: "Trained 500+ professionals globally",
     image: "/images/dr.png",
@@ -1066,7 +1066,7 @@ image: "/images/dr.png", // replace with actual image
   certification: "Master Certificate in Non-Surgical Nose Correction",
 
   instructor: {
-    name: "Dr. Aesthetic Kumar",
+    name: "Dr. Shikha Baghi",
     bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
     experience: "Trained 500+ professionals globally",
     image: "/images/dr.png",
@@ -1111,7 +1111,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Master Certificate in Acne Scar Treatment",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1150,7 +1150,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Master Certificate in Plasma Pen Treatment",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1189,7 +1189,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Master Certificate in Under-eye Rejuvenation",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1228,7 +1228,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Master Certificate in Lip Fillers",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1268,7 +1268,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Post Graduate Diploma in Facial Aesthetics",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1307,7 +1307,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Certificate in Lipolytic Injections",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1347,7 +1347,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Fellowship in Permanent Makeup and Cosmetology",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1386,7 +1386,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Fellowship in Facial Aesthetics, Permanent Makeup & Cosmetology",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1425,7 +1425,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Fellowship in Facial Aesthetics",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1464,7 +1464,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Fellowship in Permanent Makeup, Cosmetology, Medical Micropigmentation & Plasma Pen",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
@@ -1505,7 +1505,7 @@ image: "/images/dr.png", // replace with actual image
             ],
             certification: "Fellowship in Facial Aesthetics, Permanent Makeup, Cosmetology, Medical Micropigmentation & Plasma Pen",
             instructor: {
-              name: "Dr. Aesthetic Kumar",
+              name: "Dr. Shikha Baghi",
               bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
               experience: "Trained 500+ professionals globally",
 image: "/images/dr.png", // replace with actual image
