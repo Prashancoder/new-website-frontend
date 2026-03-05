@@ -9,13 +9,13 @@ const courses = [
     title: "Fellowship in Permanent Makeup and Cosmetology",
     link: "/courses/fellowship/permanent-cosmetology",
     description: "An intensive clinical program blending micropigmentation artistry with advanced cosmetology protocols for complete aesthetic mastery.",
-    image: "/images/courses/000.webp",
+    image: "/images/courses/111.png",
   },
   {
     title: "Fellowship in Facial Aesthetics, Permanent Makeup & Cosmetology",
     link: "/courses/fellowship/facial-permanent-cosmetology",
     description: "A prestigious integrated fellowship covering advanced injectables, semi-permanent makeup, and clinical skin care treatments.",
-    image: "/images/courses/1.webp",
+    image: "/images/courses/222.png",
   },
   {
     title: "Fellowship in Facial Aesthetics",
@@ -135,7 +135,7 @@ function FellowshipCoursesPage() {
               className="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
             >
               {/* Course Image */}
-              <div className="h-56 overflow-hidden">
+              <div className="h-60 overflow-hidden">
                 <img
                   src={course.image}
                   alt={course.title}

@@ -1,5 +1,6 @@
 import React from 'react'
 import home from "../assets/44.jpeg"
+import mobileBanner from "../assets/000.jpeg"
 import Nav from '../components/Nav'
 import { SiViaplay } from "react-icons/si";
 import ServicesSection from "../components/ServicesSection";
@@ -32,11 +33,23 @@ function Home() {
      <Nav/>
 
      <div className="w-full aspect-video relative overflow-hidden">
-  <img
-    src={home}
-    alt="Banner"
-    className="w-full h-full object-cover"
-  />
+     <div className="w-full aspect-video relative overflow-hidden">
+
+{/* Desktop Image */}
+<img
+  src={home}
+  alt="Desktop Banner"
+  className="w-full h-full object-cover hidden md:block"
+/>
+
+{/* Mobile Image */}
+<img
+  src={mobileBanner}
+  alt="Mobile Banner"
+  className="w-full h-full object-cover block md:hidden"
+/>
+
+</div>
 
         <div className='absolute lg:top-[30%] top-[75%]  md:top-[80%] w-[100%] flex items-center justify-center gap-3 flex-wrap'>
           
