@@ -10,7 +10,7 @@ const courses = [
     link: "/courses/laser-practice/laser-practice-page1",
     description:
       "A comprehensive module covering laser-tissue interaction, melanin absorption, safety protocols (ANSI standards), and hands-on mastery of Diode, Nd:YAG, and IPL technologies.",
-    image: "/images/courses/000.webp",
+    image: "/images/courses/111.jpg",
   },
   {
     title: "HIFU (Skin Tightening)",
@@ -128,7 +128,7 @@ const LaserPractisePage = () => {
               className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100 transition-all duration-300 group max-w-sm"
             >
               {/* Course Image */}
-              <div className="overflow-hidden h-52">
+              <div className="overflow-hidden h-60">
                 <img
                   src={course.image}
                   alt={course.title}

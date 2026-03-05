@@ -38,14 +38,14 @@ function Home() {
 {/* Desktop Image */}
 <img
   src={home}
-  alt="Desktop Banner"
+  alt="Timeless Aesthetics facial aesthetics clinic and academy Gurgaon"
   className="w-full h-full object-cover hidden md:block"
 />
 
 {/* Mobile Image */}
 <img
   src={mobileBanner}
-  alt="Mobile Banner"
+  alt="Permanent makeup and facial aesthetics training institute Gurgaon"
   className="w-full h-full object-cover block md:hidden"
 />
 
