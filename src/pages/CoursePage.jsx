@@ -112,7 +112,6 @@ const courseDataMap = {
 
           "permanent-makeup/master-scalp": {
             title: "Master class in Scalp Micropigmentation",
-            courseDetailImage: "/courses2/1.jpeg", // New Image Path
             description:
             "Specialized training in scalp micropigmentation for hair loss treatment. Learn advanced techniques to create natural-looking hair follicles and restore confidence in clients with hair loss.",
             duration: "4 Days",
@@ -120,6 +119,8 @@ const courseDataMap = {
             category: "Permanent Makeup",
             price: "₹55,000",
             image: "/images/courses-banner.jpeg",
+            courseDetailImage: "/courses2/Master class in Scalp Micropigmentation.png", 
+                        
             features: [
             "Advanced SMP techniques",
             "Hair loss pattern analysis",
@@ -149,7 +150,6 @@ const courseDataMap = {
             bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
             experience: "Trained 500+ professionals globally",
             image: "/images/dr.png", // replace with actual image
-            courseDetailImage: "/courses2/Master class in Scalp Micropigmentation.png", 
             },
             videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             },
@@ -180,6 +180,7 @@ const courseDataMap = {
             category: "Permanent Makeup",
             price: "₹85,000",
             image: "/images/courses-banner.jpeg",
+            courseDetailImage: "/courses2/PG Diploma in PMU.png", 
             features: [
               "Complete permanent makeup training",
               "All techniques covered",
