@@ -421,7 +421,7 @@ function Nav() {
                         <div className='hidden lg:flex items-center space-x-3'> 
                             {/* Call Button */}
                             <a
-  href="tel:+919654009966"
+  href="tel:+918750027070"
   title="Call Now"  
   className="w-10 h-10 flex items-center justify-center bg-black text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-200"
 >

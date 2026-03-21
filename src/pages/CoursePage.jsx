@@ -59,8 +59,10 @@ const courseDataMap = {
     duration: "10 Days",
     level: "Mastery",
     category: "Permanent Makeup",
+    courseDetailImage: "/courses2/MastersinPMU.png", 
+
     price: "₹1,25,000",
-    image: "/images/courses-banner.jpeg",
+    image: "/Masters-in-PMU.png",
 
     features: [
         "Full PMU kit included (Machine & Pigments)",
@@ -98,7 +100,9 @@ const courseDataMap = {
         bio: "International trainer with 12+ years of expertise in Permanent Makeup & Cosmetology.",
         experience: "Trained 500+ professionals globally",
         image: "/images/dr.png",
-        courseDetailImage: "/courses2/MastersinPMU.png",
+        // courseDetailImage: "/courses2/MastersinPMU.png",
+        courseDetailImage: "/courses2/Master class in Scalp Micropigmentation.png", 
+
     },
 
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
