@@ -1551,6 +1551,7 @@ image: "/images/dr.png", // replace with actual image
   category: "Laser Practice Courses",
   price: "₹1,80,000",
   image: "/images/laser1.jpg",
+  courseDetailImage: "/courses2/laser1.jpeg",
   
   features: [
     "Hands-on laser training",
@@ -1593,6 +1594,7 @@ image: "/images/dr.png", // replace with actual image
     category: "Laser Practice Courses",
     price: "₹2,80,000",
     image: "/images/laser2.jpg",
+    courseDetailImage: "/courses2/laser2.jpeg",
     features: [
       "Comprehensive laser training",
       "Light-based treatment modules",
