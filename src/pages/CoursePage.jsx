@@ -1575,10 +1575,10 @@ image: "/images/dr.png", // replace with actual image
   ],
   certification: "Certificate in Advanced Laser Treatments & Skin Rejuvenation",
   instructor: {
-    name: "Dr. Neha Kapoor",
+    name: "Dr. Shikha Baghi",
     bio: "Dermatologist and Laser Specialist with 10+ years of clinical experience in advanced laser techniques.",
     experience: "Trained over 300 professionals across India",
-    image: "/images/drneha.jpg",
+    image: "/images/22.png",
     courseDetailImage: "/courses2/1.jpeg", // New Image Path
   },
   videoUrl: "https://www.youtube.com/embed/Cz3b8x6X1Vw"
@@ -1617,10 +1617,10 @@ image: "/images/dr.png", // replace with actual image
     ],
     certification: "Professional Diploma in Aesthetic Laser & Light-Based Therapies",
     instructor: {
-      name: "Dr. Ritu Sharma",
+      name: "Dr. Shikha Baghi",
       bio: "Certified Laser and Aesthetic Medicine Specialist with 8+ years of experience in laser-based skin therapies.",
       experience: "Conducted 200+ workshops on aesthetic laser treatments",
-      image: "/images/drritu.jpg",
+      image: "/images/dr.png",
       courseDetailImage: "/courses2/1.jpeg", // New Image Path
 
     },

@@ -29,8 +29,8 @@ const LaserPractisePage = () => {
       {/* Hero Section */}
       <div className="relative h-72 flex items-center justify-center">
         <img
-          src="/images/courses-banner.jpeg"
-          alt="Laser Practice Courses Banner"
+              src="/laser-practise/HIFU.png"
+              alt="Laser Practice Courses Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50"></div>
@@ -67,7 +67,7 @@ const LaserPractisePage = () => {
             className="relative"
           >
             <img
-              src="/images/gallery/1.png"
+              src="/laser-practise/laser.png"
               alt="Advanced Laser Training"
               className="rounded-xl shadow-xl border-2 border-[#D4AF37] hover:scale-105 transition-transform duration-300 relative z-10"
             />
