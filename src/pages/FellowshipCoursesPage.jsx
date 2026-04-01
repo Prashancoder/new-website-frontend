@@ -9,31 +9,32 @@ const courses = [
     title: "Fellowship in Permanent Makeup and Cosmetology",
     link: "/courses/fellowship/permanent-cosmetology",
     description: "An intensive clinical program blending micropigmentation artistry with advanced cosmetology protocols for complete aesthetic mastery.",
-    image: "/images/courses/111.png",
+    image: "/images/courses/Fellowship pmu n cos.jpeg",
   },
   {
     title: "Fellowship in Facial Aesthetics, Permanent Makeup & Cosmetology",
     link: "/courses/fellowship/facial-permanent-cosmetology",
     description: "A prestigious integrated fellowship covering advanced injectables, semi-permanent makeup, and clinical skin care treatments.",
-    image: "/images/courses/222.png",
-  },
+    image: "/images/courses/Lipolytic injection.jpeg"
+    },
   {
     title: "Fellowship in Facial Aesthetics",
     link: "/courses/fellowship/facial-aesthetics",
     description: "Specialized training focused on non-surgical facial rejuvenation, including advanced filler mapping and toxin injection protocols.",
-    image: "/images/courses/2.webp",
+    image: "/images/courses/Fellowship in Facial aesthetics.jpeg"
+  
   },
   {
     title: "Fellowship in PMU, Cosmetology, Medical Micropigmentation & Plasma Pen",
     link: "/courses/fellowship/permanent-micropigmentation",
     description: "Master high-end medical-grade procedures, including areola reconstruction, vitiligo camouflage, and fibroblast skin tightening.",
-    image: "/images/courses/3.webp",
+    image: "/images/courses/Fellowship in Facial aesthetics.jpeg"
   },
   {
     title: "Full-Spectrum Fellowship: Facial Aesthetics, PMU, Cosmetology & Plasma Pen",
     link: "/courses/fellowship/facial-permanent-micropigmentation",
     description: "The ultimate cross-disciplinary clinical residency providing full immersion into advanced aesthetic medicine and corrective artistry.",
-    image: "/images/courses/222.jpg",
+    image: "/images/courses/Fellowship in Facial aesthetics.jpeg"
   },
 ];
 
