@@ -5,12 +5,10 @@ import { Clock, Users, Award, BookOpen, Star, CheckCircle, ArrowLeft, PlayCircle
 import Nav from "../components/Nav"; // Changed from Header
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 
 const IndividualServicePage = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // 👈 ye add kar
   const [serviceData, setServiceData] = useState(null); // Type removed
   const [loading, setLoading] = useState(true);
 
@@ -524,28 +522,19 @@ const IndividualServicePage = () => {
                     <span className="text-[#555]">Category:</span>
                     <span className="font-semibold">{serviceData.category}</span>
                   </div>
-                  {/* <div className="flex justify-between items-center border-b pb-4">
+                  <div className="flex justify-between items-center border-b pb-4">
                     <span className="text-[#555]">Price:</span>
                     <span className="text-2xl font-bold text-[#D4AF37]">
                       {serviceData.price}
                     </span>
-                  </div> */}
+                  </div>
                   {/* Buttons replaced with standard button elements */}
-                  {/* <button className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-12 py-3 px-4 bg-transparent border-2 border-[#D4AF37] text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white">
+                  <button className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-12 py-3 px-4 bg-transparent border-2 border-[#D4AF37] text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white">
                     Book Appointment
-                  </button> */}
-
-<button
-      onClick={() => navigate("/contact")}
-      className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-12 py-3 px-4 bg-transparent border-2 border-[#D4AF37] text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white"
-    >
-      Book Appointment
-    </button>
-
-    
-                  {/* <button className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4 border border-[#D4AF37] bg-white text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white">
+                  </button>
+                  <button className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4 border border-[#D4AF37] bg-white text-[#3B2F2F] hover:bg-[#D4AF37] hover:text-white">
                     Download Brochure
-                  </button> */}
+                  </button>
                 </div>
               </div>
 
